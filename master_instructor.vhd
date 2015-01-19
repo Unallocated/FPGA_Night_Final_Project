@@ -6,14 +6,133 @@ use work.frame_types.all;
 entity master_instructor is
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
+
            rx : in  STD_LOGIC;
-           sine_out : out  STD_LOGIC_VECTOR (7 downto 0));
+
+           sine_out : out  STD_LOGIC_VECTOR (7 downto 0);
+
+					 adc_in : in STD_LOGIC_VECTOR(7 downto 0);
+				   adc_clk : out STD_LOGIC;
+
+					 vga_red : out STD_LOGIC_VECTOR(2 downto 0);
+					 vga_green : out STD_LOGIC_VECTOR(2 downto 0);
+					 vga_blue : out STD_LOGIC_VECTOR(1 downto 0);
+					 vga_hs : out STD_LOGIC;
+					 vga_vs : out STD_LOGIC);
 end master_instructor;
 
 architecture Behavioral of master_instructor is
 
-	signal frame : frame_t := (others => (others => '0'));
-	signal frame_valid : std_logic := '0';
+	constant rst_active : std_logic := '1';
+
+	signal vga_ram_data : std_logic_vector(7 downto 0);
+	signal vga_ram_addr : std_logic_vector(8 downto 0);
+	signal vga_ram_en : std_logic;
+	signal vga_ram_we : std_logic_vector(0 downto 0);
+	
+	COMPONENT vga_ram
+		PORT (
+			clka : IN STD_LOGIC;
+			ena : IN STD_LOGIC;
+			wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+			addra : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+			dina : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+			clkb : IN STD_LOGIC;
+			enb : IN STD_LOGIC;
+			addrb : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+			doutb : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		);
+	END COMPONENT;
+
+	signal mag_output_valid : std_logic;
+	signal mag_idx_out : std_logic_vector(8 downto 0);
+	signal mag_mag : std_logic_vector(7 downto 0);
+	
+	COMPONENT mag
+	PORT(
+		clk : IN std_logic;
+		rst : IN std_logic;
+		input_valid : IN std_logic;
+		re : IN std_logic_vector(7 downto 0);
+		im : IN std_logic_vector(7 downto 0);
+		idx_in : IN std_logic_vector(8 downto 0);          
+		idx_out : OUT std_logic_vector(8 downto 0);
+		mag : OUT std_logic_vector(7 downto 0);
+		output_valid : OUT std_logic
+		);
+	END COMPONENT;
+
+
+	signal vga_red_in : std_logic_vector(vga_red'range);
+	signal vga_green_in : std_logic_vector(vga_green'range);
+	signal vga_blue_in : std_logic_vector(vga_blue'range);
+	signal vga_x_pos, vga_y_pos : integer;
+	signal vga_h_blanking, vga_v_blanking : std_logic;
+
+	COMPONENT vga_configurable
+		PORT(
+			clk : IN std_logic;
+			rst : IN std_logic;
+			blue_in : IN std_logic_vector(1 downto 0);
+			red_in : IN std_logic_vector(2 downto 0);
+			green_in : IN std_logic_vector(2 downto 0);          
+			hs : OUT std_logic;
+			vs : OUT std_logic;
+		  h_blanking : OUT std_logic;
+		  v_blanking : OUT std_logic;
+			green : OUT std_logic_vector(2 downto 0);
+			red : OUT std_logic_vector(2 downto 0);
+			blue : OUT std_logic_vector(1 downto 0);
+			x_pos : OUT integer;
+			y_pos : OUT integer
+			);
+	END COMPONENT;
+
+	signal original_clk, fft_clk, vga_clk : std_logic;
+
+	COMPONENT dcm
+		PORT
+		 (
+			input_clk : IN STD_LOGIC;
+			original_clk : OUT STD_LOGIC;
+			fft_clk : OUT STD_LOGIC;
+			vga_clk : OUT STD_LOGIC
+		 );
+	END COMPONENT;
+
+	signal fft_xk_re, fft_xk_im, fft_xn_im, fft_xn_re : std_logic_vector(7 downto 0);
+	signal fft_ce, fft_unload, fft_start, fft_rfd, fft_busy, fft_edone, fft_done, fft_dv, fft_ovflo, fft_scale_we : std_logic;
+	signal fft_xk_index, fft_xn_index : std_logic_vector(8 downto 0);
+	signal fft_scale : std_logic_vector(17 downto 0);
+
+	COMPONENT fft
+		PORT (
+			clk : IN STD_LOGIC;
+			ce : IN STD_LOGIC;
+			start : IN STD_LOGIC;
+			xn_re : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+			xn_im : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+			fwd_inv : IN STD_LOGIC;
+			fwd_inv_we : IN STD_LOGIC;
+			scale_sch : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
+			scale_sch_we : IN STD_LOGIC;
+			rfd : OUT STD_LOGIC;
+			xn_index : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+			busy : OUT STD_LOGIC;
+			edone : OUT STD_LOGIC;
+			done : OUT STD_LOGIC;
+			dv : OUT STD_LOGIC;
+			xk_index : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+			xk_re : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+			xk_im : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+			ovflo : OUT STD_LOGIC;
+			sclr : IN STD_LOGIC;
+			unload : IN STD_LOGIC
+		);
+	END COMPONENT;
+
+	signal frame : frame_t;
+	signal frame_valid : std_logic;
 	COMPONENT uart_comms
 	PORT(
 		clk : IN std_logic;
@@ -33,28 +152,90 @@ architecture Behavioral of master_instructor is
 	  );
 	END COMPONENT;
 
-	signal sine_buffer : std_logic_vector(sine_out'range) := (others => '0');
+	signal sine_buffer : std_logic_vector(sine_out'range);
 
+
+	signal fft_waiting_to_write : std_logic;
+	signal last_vga_h_blanking, last_vga_v_blanking : std_logic;
 begin
-	
-	process(clk, rst)
+	adc_clk <= fft_clk;
+	vga_ram_we <= (others => mag_output_valid);
+	fft_scale_we <= '1';
+		
+	process(vga_clk, rst)
 	begin
-		if(rst = '1') then
+		if(rst = rst_active) then
+			vga_red_in <= (others => '0');
+			vga_green_in <= (others => '0');
+			vga_blue_in <= (others => '0');
+		elsif(rising_edge(vga_clk)) then
+			vga_blue_in <= (others => '0');
+			vga_ram_en <= '0';
+
+			if(vga_v_blanking = '0' and vga_h_blanking = '0') then
+				if(vga_x_pos < 514 and vga_y_pos < 256) then
+					vga_ram_en <= '1';
+					vga_ram_addr <= std_logic_vector(to_unsigned(vga_x_pos, 9) - 1);
+
+					if(255 - unsigned(vga_ram_data) <= to_unsigned(vga_y_pos, 8)) then
+						vga_blue_in <= (others => '1');
+					end if;
+				end if;
+			end if;
+		end if;
+	end process;
+
+	process(fft_clk, rst)
+	begin
+		if(rst = rst_active) then
+			fft_waiting_to_write <= '0';
+			last_vga_v_blanking <= '0';
+			last_vga_h_blanking <= '0';
+			fft_start <= '0';
+			fft_unload <= '0';
+			fft_ce <= '1';
+		elsif(rising_edge(fft_clk)) then
+			fft_unload <= '0';
+			fft_start <= '0';
+			last_vga_v_blanking <= vga_v_blanking;
+			last_vga_h_blanking <= vga_h_blanking;
+
+			if(fft_done = '1') then
+				fft_waiting_to_write <= '1';
+			end if;
+
+			if(fft_waiting_to_write = '1' and last_vga_v_blanking = '0' and vga_v_blanking = '1' and last_vga_h_blanking = '0' and vga_h_blanking = '1') then
+				fft_waiting_to_write <= '0';
+				fft_unload <= '1';
+			end if;
+
+			if(fft_start = '0' and fft_rfd = '0' and fft_busy = '0' and fft_done = '0' and fft_edone = '0' and fft_waiting_to_write = '0' and vga_v_blanking = '0' and vga_h_blanking = '0') then
+				fft_start <= '1';
+			end if;
+		end if;
+	end process;
+	
+	process(original_clk, rst)
+	begin
+		if(rst = rst_active) then
 			sine_out <= x"80";
-		elsif(rising_edge(clk)) then
+		elsif(rising_edge(original_clk)) then
 			sine_out <= std_logic_vector(unsigned(sine_buffer) + 128);
 		end if;
 	end process;
 	
-	process(clk, rst)
+	process(original_clk, rst)
 	begin
-		if(rst = '1') then
+		if(rst = rst_active) then
 			pinc_in <= x"00FF";
-		elsif(rising_edge(clk)) then
+			fft_scale <= "010101010101010110";
+		elsif(rising_edge(original_clk)) then
 			if(frame_valid = '1') then
 				case frame(3) is
 					when x"00" =>
 						pinc_in <= frame(4) & frame(5);
+					when x"01" =>
+						fft_scale <= frame(4) & frame(5) & "10";
 					when others  =>
 						null;
 				end case;
@@ -62,22 +243,96 @@ begin
 		end if;
 	end process;
 
+
+	vga_ram_inst : vga_ram
+		PORT MAP (
+			clka => fft_clk,
+			ena => mag_output_valid,
+			wea => vga_ram_we,
+			addra => mag_idx_out,
+			dina => mag_mag,
+			clkb => vga_clk,
+			enb => vga_ram_en,
+			addrb => vga_ram_addr,
+			doutb => vga_ram_data
+		);
+
+	mag_inst : mag PORT MAP(
+		clk => fft_clk,
+		rst => rst,
+		input_valid => fft_dv,
+		re => fft_xk_re,
+		im => fft_xk_im,
+		idx_in => fft_xk_index,
+		idx_out => mag_idx_out,
+		mag => mag_mag,
+		output_valid => mag_output_valid
+	);
+
+	vga_inst : vga_configurable PORT MAP(
+		clk => vga_clk,
+		rst => rst,
+		hs => vga_hs,
+		vs => vga_vs,
+		green => vga_green,
+		red => vga_red,
+		blue => vga_blue,
+		h_blanking => vga_h_blanking,
+		v_blanking => vga_v_blanking,
+		x_pos => vga_x_pos,
+		y_pos => vga_y_pos,
+		blue_in => vga_blue_in,
+		red_in => vga_red_in,
+		green_in => vga_green_in
+	);
+
 	sine_gen_inst : sine_gen
 	  PORT MAP (
-		 clk => clk,
+		 clk => original_clk,
 		 pinc_in => pinc_in,
 		 sine => sine_buffer
 	  );
 	  
-	Inst_uart_comms: uart_comms PORT MAP(
-		clk => clk,
-		rst => rst,
-		rx => rx,
-		frame => frame,
-		frame_valid => frame_valid
-	);
+	Inst_uart_comms: uart_comms 
+		PORT MAP(
+			clk => original_clk,
+			rst => rst,
+			rx => rx,
+			frame => frame,
+			frame_valid => frame_valid
+		);
+
+	dcm_inst : dcm
+		PORT MAP (
+			input_clk => clk,
+			original_clk => original_clk,
+			fft_clk => fft_clk,
+			vga_clk => vga_clk
+		);
+
+	fft_inst : fft
+		PORT MAP (
+			clk => fft_clk,
+			ce => fft_ce,
+			start => fft_start,
+			xn_re => adc_in,
+			xn_im => (others => '0'),
+			fwd_inv => '1',
+			fwd_inv_we => '1',
+			scale_sch => fft_scale,
+			scale_sch_we => fft_scale_we,
+			rfd => fft_rfd,
+			xn_index => open,
+			busy => fft_busy,
+			edone => fft_edone,
+			done => fft_done,
+			dv => fft_dv,
+			xk_index => fft_xk_index,
+			xk_re => fft_xk_re,
+			xk_im => fft_xk_im,
+			ovflo => fft_ovflo,
+			sclr => rst,
+			unload => fft_unload
+		);
 
 end Behavioral;
-
-
-

@@ -1,0 +1,15 @@
+# Output products list for <mag_sqrt>
+_xmsgs\pn_parser.xmsgs
+mag_sqrt.asy
+mag_sqrt.gise
+mag_sqrt.ngc
+mag_sqrt.sym
+mag_sqrt.vhd
+mag_sqrt.vho
+mag_sqrt.xco
+mag_sqrt.xise
+mag_sqrt\doc\cordic_ds249.pdf
+mag_sqrt\doc\cordic_v4_0_vinfo.html
+mag_sqrt_flist.txt
+mag_sqrt_readme.txt
+mag_sqrt_xmdf.tcl

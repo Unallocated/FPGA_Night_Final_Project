@@ -9,7 +9,7 @@ entity uart_comms is
         rst  : in  std_logic;
         rx   : in  std_logic;
         frame : out frame_t;
-		  frame_valid : out std_logic);
+			  frame_valid : out std_logic);
 end uart_comms;
 
 architecture Behavioral of uart_comms is
@@ -36,10 +36,7 @@ architecture Behavioral of uart_comms is
   type frame_state_t is (PREAMBLE, LENGTH, PAYLOAD, FCS);
   signal frame_state : frame_state_t := PREAMBLE;
 
-  
   signal current_frame : frame_t := (others => (others => '0'));
-  signal last_frame : frame_t := (others => (others => '0'));
-
   signal current_frame_pos : integer range 0 to 31 := 0;
   signal current_frame_checksum : std_logic_vector(7 downto 0) := (others => '0');
 
@@ -53,10 +50,9 @@ begin
       frame_state <= PREAMBLE;
       current_frame_pos <= 0;
       current_frame <= (others => (others => '0'));
-      last_frame <= (others => (others => '0'));
       current_frame_checksum <= (others => '0');
-		frame <= (others => (others => '0'));
-		frame_valid <= '0';
+			frame <= (others => (others => '0'));
+			frame_valid <= '0';
     elsif(rising_edge(clk)) then
       frame_valid <= '0';
 		
@@ -101,8 +97,8 @@ begin
               frame_state <= PREAMBLE;
 
               if(rx_data = current_frame_checksum) then
-						frame <= current_frame;
-						frame_valid <= '1';
+								frame <= current_frame;
+								frame_valid <= '1';
               end if;
           end case;
       end case;
