@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="sine_gen">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2015-1-18T19:49:37</timestamp>
+    <timestamp>2015-1-19T22:31:19</timestamp>
     <pin polarity="Input" x="0" y="80" name="clk" />
     <pin polarity="Output" x="352" y="176" name="sine[7:0]" />
     <pin polarity="Input" x="0" y="304" name="pinc_in[15:0]" />

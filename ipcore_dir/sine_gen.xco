@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.6
-# Date: Sun Jan 18 19:48:29 2015
+# Date: Mon Jan 19 22:30:09 2015
 #
 ##############################################################
 #
@@ -44,7 +44,7 @@ CSET channel_pin=false
 CSET channels=1
 CSET clock_enable=false
 CSET component_name=sine_gen
-CSET dds_clock_rate=100
+CSET dds_clock_rate=40
 CSET dsp48_use=Minimal
 CSET explicit_period=false
 CSET frequency_resolution=0.4
@@ -139,4 +139,4 @@ CSET spurious_free_dynamic_range=36
 MISC pkg_timestamp=2012-08-28T14:48:35Z
 # END Extra information
 GENERATE
-# CRC: a0b118df
+# CRC: 21faedba

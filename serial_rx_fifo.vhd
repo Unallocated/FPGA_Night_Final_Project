@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity serial_rx_fifo is
-    Generic ( clk_rate : natural := 100_000_000;
-              baud_rate : natural := 500_000
+    Generic ( clk_rate : natural;
+              baud_rate : natural
     );
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;

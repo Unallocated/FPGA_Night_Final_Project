@@ -5,6 +5,9 @@ use ieee.numeric_std.all;
 use work.frame_types.all;
 
 entity uart_comms is
+	generic( clk_rate : natural;
+	         baud_rate : natural
+	);
   port( clk  : in  std_logic;
         rst  : in  std_logic;
         rx   : in  std_logic;
@@ -18,6 +21,10 @@ architecture Behavioral of uart_comms is
   signal rx_data : std_logic_vector(7 downto 0);
 
   COMPONENT serial_rx_fifo
+	GENERIC(
+		clk_rate : natural := clk_rate;
+		baud_rate : natural := baud_rate
+	);
   PORT(
     clk : IN std_logic;
     rst : IN std_logic;
