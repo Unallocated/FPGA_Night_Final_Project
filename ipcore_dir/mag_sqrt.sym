@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="mag_sqrt">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2015-1-19T17:1:49</timestamp>
+    <timestamp>2015-1-31T17:51:41</timestamp>
     <pin polarity="Input" x="0" y="80" name="x_in[15:0]" />
     <pin polarity="Input" x="0" y="304" name="clk" />
     <pin polarity="Output" x="576" y="80" name="x_out[8:0]" />

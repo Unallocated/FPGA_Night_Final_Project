@@ -10,6 +10,7 @@ entity mag is
          re  : in std_logic_vector(7 downto 0);
          im  : in std_logic_vector(7 downto 0);
          idx_in : in std_logic_vector(8 downto 0);
+				 next_idx_out : out std_logic_vector(8 downto 0);
          idx_out : out std_logic_vector(8 downto 0);
          mag : out std_logic_vector(7 downto 0);
          output_valid  : out std_logic);
@@ -54,6 +55,7 @@ begin
       re_buffer <= (others => '0');
       im_buffer <= (others => '0');
       valid_array <= (others => '0');
+			next_idx_out <= (others => '0');
     elsif(rising_edge(clk)) then
       for i in 0 to stages-2 loop
         idx_buffer_array(i+1) <= idx_buffer_array(i);
@@ -80,6 +82,7 @@ begin
       output_valid <= valid_array(valid_array'high);
       mag <= sqrt_out(7 downto 0);
       idx_out <= idx_buffer_array(idx_buffer_array'high);
+			next_idx_out <= idx_buffer_array(idx_buffer_array'high - 1);
     end if;
   end process;
 

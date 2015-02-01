@@ -76,6 +76,8 @@ entity master_instructor is
 					 -- adc sampling clock
 				   adc_clk : out STD_LOGIC;
 
+					 leds : out STD_LOGIC_VECTOR(7 downto 0);
+
 					 -- vga red output
 					 vga_red : out STD_LOGIC_VECTOR(vga_colors_red_width-1 downto 0);
 		       -- vga green output
@@ -119,7 +121,7 @@ architecture Behavioral of master_instructor is
 	signal mag_output_valid : std_logic;
 	-- Magnitude calculation output index (used to tell where to put the 
 	-- output samples in memory)
-	signal mag_idx_out : std_logic_vector(8 downto 0);
+	signal mag_idx_out, mag_next_idx_out : std_logic_vector(8 downto 0);
 	-- Magnitude output (the actual calculated magnitude)
 	signal mag_mag : std_logic_vector(7 downto 0);
 	
@@ -134,6 +136,7 @@ architecture Behavioral of master_instructor is
 		im : IN std_logic_vector(7 downto 0);
 		idx_in : IN std_logic_vector(8 downto 0);          
 		idx_out : OUT std_logic_vector(8 downto 0);
+		next_idx_out : OUT std_logic_vector(8 downto 0);
 		mag : OUT std_logic_vector(7 downto 0);
 		output_valid : OUT std_logic
 		);
@@ -201,7 +204,7 @@ architecture Behavioral of master_instructor is
 	-- Used to tell what index (position) the input/output values are for
 	signal fft_xk_index, fft_xn_index : std_logic_vector(8 downto 0);
 	-- Used to scale the FFT values internally
-	signal fft_scale : std_logic_vector(17 downto 0);
+	signal fft_scale : std_logic_vector(17 downto 0) := "010101010101010110";
 
 	-- Computes the FFT of the input data from the ADC
 	COMPONENT fft
@@ -215,6 +218,7 @@ architecture Behavioral of master_instructor is
 			fwd_inv_we : IN STD_LOGIC;
 			scale_sch : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
 			scale_sch_we : IN STD_LOGIC;
+		  --blk_exp : OUT STD_LOGIC_VECTOR(4 downto 0);
 			rfd : OUT STD_LOGIC;
 			xn_index : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
 			busy : OUT STD_LOGIC;
@@ -265,6 +269,53 @@ architecture Behavioral of master_instructor is
 	  );
 	END COMPONENT;
 
+	signal avg_ram_we : std_logic_vector(0 downto 0);
+	signal avg_ram_din, avg_ram_dout : std_logic_vector(7 downto 0);
+	signal avg_ram_addr : std_logic_vector(8 downto 0);
+	COMPONENT avg_ram
+		PORT (
+			clka : in STD_LOGIC;
+			rsta : in STD_LOGIC;
+			wea : in STD_LOGIC_VECTOR(0 downto 0);
+			dina : in STD_LOGIC_VECTOR(7 downto 0);
+			addra : in STD_LOGIC_VECTOR(8 downto 0);
+			douta : out STD_LOGIC_VECTOR(7 downto 0)
+		);
+	END COMPONENT;
+
+	signal decimate_out, decimate_in : std_logic_vector(7 downto 0);
+	signal decimate_rate : std_logic_vector(3 downto 0);
+	signal decimate_we : std_logic;
+	COMPONENT decimate
+		PORT (
+			din : in std_logic_vector(7 downto 0);
+			rate : in std_logic_vector(3 downto 0);
+			rate_we : in std_logic;
+			clk : in std_logic;
+			sclr : in std_logic;
+			dout : out std_logic_vector(7 downto 0);
+			rfd : out std_logic;
+			rdy : out std_logic
+		);
+	END COMPONENT;
+
+	signal avg_out : std_logic_vector(7 downto 0);
+	signal avg_idx : std_logic_vector(8 downto 0);
+	signal avg_valid : std_logic;
+	COMPONENT averaging
+		PORT(
+			clk : IN std_logic;
+			rst : IN std_logic;
+			a : IN std_logic_vector(7 downto 0);
+			mag_in : IN std_logic_vector(7 downto 0);
+			mag_idx : IN std_logic_vector(8 downto 0);
+			mag_valid : IN std_logic;          
+			avg_out : OUT std_logic_vector(7 downto 0);
+			avg_idx : OUT std_logic_vector(8 downto 0);
+			avg_valid : OUT std_logic
+			);
+	END COMPONENT;
+
 	-- Needed to store the output from the DDS sine generator so that
 	-- its output can be converted from signed to unsigned
 	signal sine_buffer : std_logic_vector(sine_out'range);
@@ -276,7 +327,44 @@ architecture Behavioral of master_instructor is
 	-- output from the VGA module
 	signal last_vga_h_blanking, last_vga_v_blanking : std_logic;
 
+	signal max_clock_counter_value : integer := 0;
+	signal clock_counter_value : integer := 0;
+	signal real_fft_clk : std_logic;
+	signal adc_offset : unsigned(7 downto 0);
+
+	
+	type avg_storage_t is array(0 to 511) of std_logic_vector(15 downto 0);
+	signal avg_storage : avg_storage_t;
+	signal avg : unsigned(15 downto 0);
+	signal avg_val : std_logic_vector(7 downto 0);
 begin
+
+	leds <= decimate_rate & "0000";
+
+	Inst_averaging: averaging PORT MAP(
+		clk => real_fft_clk,
+		rst => rst,
+		a => avg_val,
+		mag_in => mag_mag,
+		mag_idx => mag_idx_out,
+		mag_valid => mag_output_valid,
+		avg_out => avg_out,
+		avg_idx => avg_idx,
+		avg_valid => avg_valid
+	);
+
+
+	decimate_inst : decimate
+		PORT MAP (
+			clk => fft_clk,
+			din => decimate_in,
+			dout => decimate_out,
+			rate => decimate_rate,
+			rate_we => decimate_we,
+			sclr => rst,
+			rfd => open,
+			rdy => open
+		);
 
 	-- The ADC and FFT clocks are the same
 	adc_clk <= fft_clk;
@@ -289,16 +377,37 @@ begin
 	-- change is applied immediately
 	fft_scale_we <= '1';
 		
+	process(fft_clk, rst)
+	begin
+		if(rst = '1') then
+			clock_counter_value <= 0;
+			real_fft_clk <= '0';
+		elsif(rising_edge(fft_clk)) then
+			decimate_in <= std_logic_vector(unsigned(adc_in) + adc_offset);
+			clock_counter_value <= clock_counter_value + 1;
+
+			if(clock_counter_value >= max_clock_counter_value) then
+				clock_counter_value <= 0;
+				real_fft_clk <= not real_fft_clk;
+			end if;
+		end if;
+	end process;
+
 	-- This process controls the rendering of the FFT output to the VGA monitor
 	-- There will be a rectangle at the top left corder of the screen that has the
 	-- FFT magnitude outputs
 	process(vga_clk, rst)
+		--variable avg : unsigned(15 downto 0);
+		--type avg_storage_t is array(0 to 511) of std_logic_vector(7 downto 0);
+		--variable avg_storage : avg_storage_t;
 	begin
 		if(rst = '1') then
 			-- Reset all of the colors
 			vga_red_in <= (others => '0');
 			vga_green_in <= (others => '0');
 			vga_blue_in <= (others => '0');
+			avg <= (others => '0');
+			avg_storage <= (others => (others => '0'));
 		elsif(rising_edge(vga_clk)) then
 			-- Default the blue color to off
 			vga_blue_in <= (others => '0');
@@ -310,20 +419,26 @@ begin
 			if(vga_v_blanking = '0' and vga_h_blanking = '0') then
 				-- Because the read side address of the VGA RAM is one cycle behind, use 514
 				-- instead of 512.  The Y position is at most 255
-				if(vga_x_pos < 514 and vga_y_pos < 256) then
+				if(vga_x_pos > -1 and vga_y_pos > -1 and vga_x_pos < 256 and vga_y_pos < 256) then
 					-- Rendering is required, so enable the read side of the VGA RAM
 					vga_ram_en <= '1';
 
 					-- In order to get data out of the read side of the VGA RAM, the address
 					-- needs to be set.  Here the address is the previous X position so that
 					-- everything is zero based like it should be
-					vga_ram_addr <= std_logic_vector(to_unsigned(vga_x_pos, 9) - 1);
-
+					vga_ram_addr <= std_logic_vector(to_unsigned(vga_x_pos - 1, 9));
+					
+					--if(vga_y_pos = 1) then
+						--avg <= (avg_val * unsigned(vga_ram_data)) + ((256-avg_val) * unsigned(avg_storage(vga_x_pos)));
+						--avg_storage(vga_x_pos) <=  std_logic_vector((avg_val * unsigned(vga_ram_data)) + ((256-avg_val) * unsigned(avg_storage(vga_x_pos))));
+						--avg_storage(vga_x_pos) <= std_logic_vector(avg(15 downto 8));
+					--end if;
 					-- The 255 minus part is so that the blue lines are rendered from the bottom
 					-- of the rectangular window.  So long as the current position in memory is less
 					-- than or equal to the current Y position, render the color blue.  This will make
 					-- the blue line.  Just using equals to instead of less than or equal to will plot
 					-- dots on the screen
+					--if(255 - unsigned(avg_storage(vga_x_pos)(15 downto 8)) <= to_unsigned(vga_y_pos, 8)) then
 					if(255 - unsigned(vga_ram_data) <= to_unsigned(vga_y_pos, 8)) then
 						-- Turn on all of the blue bits
 						vga_blue_in <= (others => '1');
@@ -335,7 +450,7 @@ begin
 
 	-- This process controls the FFT block.  It handles starting the block and unloading
 	-- data to the magnitude calculator
-	process(fft_clk, rst)
+	process(real_fft_clk, rst)
 	begin
 		if(rst = '1') then
 			-- Reset all of the signals touched by this process
@@ -345,7 +460,7 @@ begin
 			fft_start <= '0';
 			fft_unload <= '0';
 			fft_ce <= '1';
-		elsif(rising_edge(fft_clk)) then
+		elsif(rising_edge(real_fft_clk)) then
 			-- Turn off the unload signal by default.  It will be overridden later
 			fft_unload <= '0';
 			-- Turn off the start signal by default.  It will be overridden later
@@ -390,12 +505,12 @@ begin
 	end process;
 	
 	-- Handles converting the DDS sine wave output from signed to unsigned
-	process(original_clk, rst)
+	process(fft_clk, rst)
 	begin
 		if(rst = '1') then
 			-- Reset the sine output to the center value of 0x80 (should be ~ 1.65 volts)
 			sine_out <= x"80";
-		elsif(rising_edge(original_clk)) then
+		elsif(rising_edge(real_fft_clk)) then
 			-- Modify the sine_buffer value (which is directly from the DDS module) by adding
 			-- 128 which makes the sign fall off
 			sine_out <= std_logic_vector(unsigned(sine_buffer) + 128);
@@ -404,14 +519,31 @@ begin
 	
 	-- Handles the UART data that has come in
 	process(original_clk, rst)
+		variable last_decimate_we : std_logic := '0';
+		variable decimate_countdown : unsigned(31 downto 0);
 	begin
 		if(rst = '1') then
+			last_decimate_we := '0';
 			-- Default the phase increment to be 0x00FF (arbitrarily chosen)
 			pinc_in <= x"00FF";
 			-- Default the fft scaling to shift one bit for each stage except the last
 			-- which is shifted twice
 			fft_scale <= "010101010101010110";
+
+			max_clock_counter_value <= 0;
+			avg_val <= std_logic_vector(to_unsigned(64, 8));
+			adc_offset <= (others => '0');
+			decimate_rate <= "0100";
+			decimate_we <= '1';
+			last_decimate_we := '0';
+			decimate_countdown := to_unsigned(100, decimate_countdown'length);
 		elsif(rising_edge(original_clk)) then
+			if(decimate_countdown = 0) then
+				decimate_we <= '0';
+			else
+				decimate_countdown := decimate_countdown - 1;
+			end if;
+
 			-- Make sure that the frame is valid
 			-- This signal is only active for one tick of original_clk, so there
 			-- is no danger of sampling it twice
@@ -427,6 +559,16 @@ begin
 						-- To keep things simple, the last two bits (which have different constraints)
 						-- are just set to "10" and the other 16 bits are whatever is sent in the frame
 						fft_scale <= frame(4) & frame(5) & "10";
+					when x"02" =>
+						max_clock_counter_value <= to_integer(unsigned(frame(4)) & unsigned(frame(5)) & unsigned(frame(6)) & unsigned(frame(7)));
+					when x"03" =>
+						avg_val <= frame(4);
+					when x"04" =>
+						adc_offset <= unsigned(frame(4));
+					when x"05" =>
+						decimate_rate <= frame(4)(3 downto 0);
+						decimate_we <= '1';
+						decimate_countdown := to_unsigned(100, decimate_countdown'length);
 					when others =>
 						-- Gotta make sure to have an others!
 						null;
@@ -441,18 +583,18 @@ begin
 	vga_ram_inst : vga_ram
 		PORT MAP (
 			-- The write clock is synchronized to the FFT clock
-			clka => fft_clk,
+			clka => real_fft_clk,
 			-- Only write to the VGA RAM when the magnitude output_valid flag is high
 			-- This means that the mag_mag signal contains legit data.  This also helps
 			-- make sure that there are not collisions between the read and write side 
 			-- of the VGA RAM
-			ena => mag_output_valid,
+			ena => avg_valid,
 			-- Only allow writes to the VGA RAM when the VGA process sets vga_ram_we to high
 			wea => vga_ram_we,
 			-- This is the write address which is controlled by the magnitude calculator
-			addra => mag_idx_out,
+			addra => avg_idx,
 			-- This is the write data which is also controlled by the magnitude calculator
-			dina => mag_mag,
+			dina => avg_out,
 			-- The read side of the VGA RAM is controlled by the VGA processes and module,
 			-- so it needs to be synchronized to the VGA clock
 			clkb => vga_clk,
@@ -472,7 +614,7 @@ begin
 	mag_inst : mag PORT MAP(
 		-- This module is fed directly from the FFT module, so it needs to run
 		-- off of the same clock
-		clk => fft_clk,
+		clk => real_fft_clk,
 		-- Active high async reset
 		rst => rst,
 		-- Since this module is pipelined, it's important that the pipeline know 
@@ -487,6 +629,8 @@ begin
 		idx_in => fft_xk_index,
 		-- Index/bin of the currently available magnitude value
 		idx_out => mag_idx_out,
+
+		next_idx_out => mag_next_idx_out,
 		-- Currently available magnitude value
 		mag => mag_mag,
 		-- Flag used to tell if the output (mag and idx_out) are actually valid,
@@ -538,7 +682,7 @@ begin
 		 -- Runs off of the fft clock since there is no need to generate a
 		 -- sine wave that is faster than the FFT sampling rate (it should be
 		 -- half the sampling rate to satisfy the nyquist rate)
-		 clk => fft_clk,
+		 clk => original_clk,
 		 -- Amount that the phase should be incremented per clock.  This directly
 		 -- controls the frequency of the output sine wave
 		 pinc_in => pinc_in,
@@ -582,13 +726,13 @@ begin
 	fft_inst : fft
 		PORT MAP (
 			-- FFT clock
-			clk => fft_clk,
+			clk => real_fft_clk,
 			-- Chip enable
 			ce => fft_ce,
 			-- Signals the core to start sampling and then calculating
 			start => fft_start,
 			-- Real input
-			xn_re => adc_in,
+			xn_re => decimate_in,
 			-- Imaginary input.  Set to zeros since the ADC does not provide
 			-- imaginary values
 			xn_im => (others => '0'),
@@ -600,7 +744,8 @@ begin
 			scale_sch => fft_scale,
 			-- Applies changes to the scale_sch input
 			scale_sch_we => fft_scale_we,
-			-- Read for data signal.  Used to notify other modules that the FFT core is ready
+			--blk_exp => leds(4 downto 0),
+			-- Ready for data signal.  Used to notify other modules that the FFT core is ready
 			-- to receive data from the ADC
 			rfd => fft_rfd,
 			-- Shows which index is currently being read.  Nothing needs this.

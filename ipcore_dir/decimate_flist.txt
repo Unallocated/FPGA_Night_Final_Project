@@ -1,0 +1,15 @@
+# Output products list for <decimate>
+_xmsgs\pn_parser.xmsgs
+decimate.asy
+decimate.gise
+decimate.ngc
+decimate.sym
+decimate.vhd
+decimate.vho
+decimate.xco
+decimate.xise
+decimate\doc\cic_compiler_ds613.pdf
+decimate\doc\cic_compiler_v2_0_vinfo.html
+decimate_flist.txt
+decimate_readme.txt
+decimate_xmdf.tcl
