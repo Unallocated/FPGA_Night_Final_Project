@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/main/git/FPGA_Night_Final_Project.old/master.ncd
+OUTFILE=/home/main/git/FPGA_Night_Final_Project.old/master.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=/home/main/git/FPGA_Night_Final_Project.old
+LICENSE=WebPack
+USER_INFO=210861346_0_0_275
