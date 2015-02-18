@@ -422,7 +422,7 @@ begin
 			if(vga_v_blanking = '0' and vga_h_blanking = '0') then
 				-- Because the read side address of the VGA RAM is one cycle behind, use 514
 				-- instead of 512.  The Y position is at most 255
-				if(vga_x_pos > -1 and vga_y_pos > -1 and vga_x_pos < fft_width_elements / 2 and vga_y_pos < 256) then
+				if(vga_x_pos > -1 and vga_y_pos > -1 and vga_x_pos < fft_width_elements and vga_y_pos < 256) then
 					-- Rendering is required, so enable the read side of the VGA RAM
 					vga_ram_en <= '1';
 

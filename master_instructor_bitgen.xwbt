@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\main-local\Documents\GitHub\final_project\master_instructor.ncd
-OUTFILE=C:\Users\main-local\Documents\GitHub\final_project\master_instructor.bit
+INFILE=/home/main/git/FPGA_Night_Final_Project/master_instructor.ncd
+OUTFILE=/home/main/git/FPGA_Night_Final_Project/master_instructor.bit
 FAMILY=Spartan6
 PART=xc6slx16-3csg324
-WORKINGDIR=C:\Users\main-local\Documents\GitHub\final_project
+WORKINGDIR=/home/main/git/FPGA_Night_Final_Project
 LICENSE=WebPack
-USER_INFO=210714202_0_0_758
+USER_INFO=210861346_0_0_275

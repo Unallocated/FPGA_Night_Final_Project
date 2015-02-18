@@ -1,0 +1,2316 @@
+Release 14.7 Map P.20131013 (lin64)
+Xilinx Mapping Report File for Design 'master_instructor'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol
+high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off
+-pr off -lc off -power off -o master_instructor_map.ncd master_instructor.ngd
+master_instructor.pcf 
+Target Device  : xc6slx16
+Target Package : csg324
+Target Speed   : -3
+Mapper Version : spartan6 -- $Revision: 1.55 $
+Mapped Date    : Tue Feb  3 19:33:04 2015
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    3
+Slice Logic Utilization:
+  Number of Slice Registers:                 1,155 out of  18,224    6%
+    Number used as Flip Flops:               1,155
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                        861 out of   9,112    9%
+    Number used as logic:                      665 out of   9,112    7%
+      Number using O6 output only:             435
+      Number using O5 output only:              31
+      Number using O5 and O6:                  199
+      Number used as ROM:                        0
+    Number used as Memory:                      72 out of   2,176    3%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:            72
+        Number using O6 output only:            12
+        Number using O5 output only:             0
+        Number using O5 and O6:                 60
+    Number used exclusively as route-thrus:    124
+      Number with same-slice register load:    122
+      Number with same-slice carry load:         2
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                   345 out of   2,278   15%
+  Number of MUXCYs used:                       312 out of   4,556    6%
+  Number of LUT Flip Flop pairs used:        1,107
+    Number with an unused Flip Flop:           216 out of   1,107   19%
+    Number with an unused LUT:                 246 out of   1,107   22%
+    Number of fully used LUT-FF pairs:         645 out of   1,107   58%
+    Number of unique control sets:              51
+    Number of slice register sites lost
+      to control set restrictions:             145 out of  18,224    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        38 out of     232   16%
+    Number of LOCed IOBs:                       38 out of      38  100%
+    IOB Flip Flops:                              8
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of      32    0%
+  Number of RAMB8BWERs:                          6 out of      64    9%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             1 out of      32    3%
+    Number used as BUFIO2FBs:                    1
+    Number used as BUFIO2FB_2CLKs:               0
+  Number of BUFG/BUFGMUXs:                       4 out of      16   25%
+    Number used as BUFGs:                        4
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     1 out of       4   25%
+    Number used as DCMs:                         1
+    Number used as DCM_CLKGENs:                  0
+  Number of ILOGIC2/ISERDES2s:                   0 out of     248    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     248    0%
+  Number of OLOGIC2/OSERDES2s:                   8 out of     248    3%
+    Number used as OLOGIC2s:                     8
+    Number used as OSERDES2s:                    0
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     128    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            6 out of      32   18%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       2    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+Average Fanout of Non-Clock Nets:                2.82
+
+Peak Memory Usage:  789 MB
+Total REAL time to MAP completion:  16 secs 
+Total CPU time to MAP completion:   16 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:Place:1206 - This design contains a global buffer instance,
+   <dcm_inst/clkout2_buf>, driving the net, <adc_clk_OBUF>, that is driving the
+   following (first 30) non-clock load pins off chip.
+   < PIN: adc_clk.O; >
+   This design practice, in Spartan-6, can lead to an unroutable situation due
+   to limitations in the global routing. If the design does route there may be
+   excessive delay or skew on this net. It is recommended to use a Clock
+   Forwarding technique to create a reliable and repeatable low skew solution:
+   instantiate an ODDR2 component; tie the .D0 pin to Logic1; tie the .D1 pin to
+   Logic0; tie the clock net to be forwarded to .C0; tie the inverted clock to
+   .C1. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was
+   applied on COMP.PIN <dcm_inst/clkout2_buf.O> allowing your design to
+   continue. This constraint disables all clock placer rules related to the
+   specified COMP.PIN.
+WARNING:Place:1137 - This design is not guaranteed to be routable! This design
+   contains a global buffer instance, <dcm_inst/clkout2_buf>, driving the net,
+   <adc_clk_OBUF>, that is driving the following (first 30) non-clock load pins.
+   < PIN: adc_clk.O; >
+   This is not a recommended design practice in Spartan-6 due to limitations in
+   the global routing that may cause excessive delay, skew or unroutable
+   situations.  It is recommended to only use a BUFG resource to drive clock
+   loads. Please pay extra attention to the timing and routing of this path to
+   ensure the design goals are met. This is normally an ERROR but the
+   CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN
+   <dcm_inst/clkout2_buf.O> allowing your design to continue. This constraint
+   disables all clock placer rules related to the specified COMP.PIN.
+WARNING:PhysDesignRules:2410 - This design is using one or more 9K Block RAMs
+   (RAMB8BWER).  9K Block RAM initialization data, both user defined and
+   default, may be incorrect and should not be used.  For more information,
+   please reference Xilinx Answer Record 39999.
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:243 - Logical network decimate_inst/rdy has no load.
+INFO:LIT:395 - The above info message is repeated 26 more times for the
+   following (max. 5 shown):
+   fft_inst/U0/i_synth/non_floating_point.arch_e.xfft_inst/single_channel.datapa
+   th/has_overflow.ovflo_gated,
+   sine_gen_inst/sig00000024,
+   mag_inst/your_instance_name/blk00000032/sig000000bd,
+   mag_inst/your_instance_name/blk00000032/sig000000bf,
+   mag_inst/your_instance_name/blk0000004d/sig000000e5
+   To see the details of these info messages, please use the -detail switch.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
+   1.260 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+INFO:PhysDesignRules:1861 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp dcm_inst/dcm_sp_inst,
+   consult the device Data Sheet.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+ 608 block(s) removed
+  67 block(s) optimized away
+ 711 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+Loadless block "fft_inst/blk000001ae/blk000001af" (XOR) removed.
+ The signal "fft_inst/blk000001ae/sig000004e4" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001ae/blk000001bb" (MUX) removed.
+   The signal "fft_inst/blk000001ae/sig000004e5" is loadless and has been removed.
+    Loadless block "fft_inst/blk000001ae/blk000001bc" (MUX) removed.
+     The signal "fft_inst/blk000001ae/sig000004e6" is loadless and has been removed.
+      Loadless block "fft_inst/blk000001ae/blk000001bd" (MUX) removed.
+       The signal "fft_inst/blk000001ae/sig000004e7" is loadless and has been removed.
+        Loadless block "fft_inst/blk000001ae/blk000001be" (MUX) removed.
+         The signal "fft_inst/blk000001ae/sig000004e8" is loadless and has been removed.
+          Loadless block "fft_inst/blk000001ae/blk000001bf" (MUX) removed.
+           The signal "fft_inst/blk000001ae/sig000004e9" is loadless and has been removed.
+            Loadless block "fft_inst/blk000001ae/blk000001c0" (MUX) removed.
+             The signal "fft_inst/blk000001ae/sig000004ea" is loadless and has been removed.
+              Loadless block "fft_inst/blk000001ae/blk000001c1" (MUX) removed.
+               The signal "fft_inst/blk000001ae/sig000004eb" is loadless and has been removed.
+                Loadless block "fft_inst/blk000001ae/blk000001c2" (MUX) removed.
+                 The signal "fft_inst/blk000001ae/sig000004ec" is loadless and has been removed.
+                  Loadless block "fft_inst/blk000001ae/blk000001c3" (MUX) removed.
+                   The signal "fft_inst/blk000001ae/sig000004ed" is loadless and has been removed.
+                    Loadless block "fft_inst/blk000001ae/blk000001c4" (MUX) removed.
+                     The signal "fft_inst/blk000001ae/sig000004ee" is loadless and has been removed.
+                      Loadless block "fft_inst/blk000001ae/blk000001c5" (MUX) removed.
+                       The signal "fft_inst/blk000001ae/sig000004ef" is loadless and has been removed.
+                        Loadless block "fft_inst/blk000001ae/blk000001c7" (MUX) removed.
+                         The signal "fft_inst/blk000001ae/sig000004f3" is loadless and has been removed.
+                          Loadless block "fft_inst/blk000001ae/blk000001d4" (ROM) removed.
+                       The signal "fft_inst/blk000001ae/sig000004f2" is loadless and has been removed.
+                        Loadless block "fft_inst/blk000001ae/blk000001d3" (ROM) removed.
+                     The signal "fft_inst/blk000001ae/sig000004f1" is loadless and has been removed.
+                      Loadless block "fft_inst/blk000001ae/blk000001d2" (ROM) removed.
+                   The signal "fft_inst/blk000001ae/sig000004e3" is loadless and has been removed.
+                    Loadless block "fft_inst/blk000001ae/blk000001ca" (ROM) removed.
+                 The signal "fft_inst/blk000001ae/sig000004e2" is loadless and has been removed.
+                  Loadless block "fft_inst/blk000001ae/blk000001cb" (ROM) removed.
+               The signal "fft_inst/blk000001ae/sig000004e1" is loadless and has been removed.
+                Loadless block "fft_inst/blk000001ae/blk000001cc" (ROM) removed.
+             The signal "fft_inst/blk000001ae/sig000004e0" is loadless and has been removed.
+              Loadless block "fft_inst/blk000001ae/blk000001cd" (ROM) removed.
+           The signal "fft_inst/blk000001ae/sig000004df" is loadless and has been removed.
+            Loadless block "fft_inst/blk000001ae/blk000001ce" (ROM) removed.
+         The signal "fft_inst/blk000001ae/sig000004de" is loadless and has been removed.
+          Loadless block "fft_inst/blk000001ae/blk000001cf" (ROM) removed.
+       The signal "fft_inst/blk000001ae/sig000004dd" is loadless and has been removed.
+        Loadless block "fft_inst/blk000001ae/blk000001d0" (ROM) removed.
+     The signal "fft_inst/blk000001ae/sig000004dc" is loadless and has been removed.
+      Loadless block "fft_inst/blk000001ae/blk000001c8" (ROM) removed.
+   The signal "fft_inst/blk000001ae/sig000004f0" is loadless and has been removed.
+    Loadless block "fft_inst/blk000001ae/blk000001d1" (ROM) removed.
+ The signal "fft_inst/blk000001ae/sig000004db" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001ae/blk000001c9" (ROM) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b0" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b1" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b2" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b3" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b4" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b5" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b6" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b7" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b8" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001b9" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001ba" (XOR) removed.
+Loadless block "fft_inst/blk000001ae/blk000001c6" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001d6" (XOR) removed.
+ The signal "fft_inst/blk000001d5/sig00000516" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001d5/blk000001e2" (MUX) removed.
+   The signal "fft_inst/blk000001d5/sig00000517" is loadless and has been removed.
+    Loadless block "fft_inst/blk000001d5/blk000001e3" (MUX) removed.
+     The signal "fft_inst/blk000001d5/sig00000518" is loadless and has been removed.
+      Loadless block "fft_inst/blk000001d5/blk000001e4" (MUX) removed.
+       The signal "fft_inst/blk000001d5/sig00000519" is loadless and has been removed.
+        Loadless block "fft_inst/blk000001d5/blk000001e5" (MUX) removed.
+         The signal "fft_inst/blk000001d5/sig0000051a" is loadless and has been removed.
+          Loadless block "fft_inst/blk000001d5/blk000001e6" (MUX) removed.
+           The signal "fft_inst/blk000001d5/sig0000051b" is loadless and has been removed.
+            Loadless block "fft_inst/blk000001d5/blk000001e7" (MUX) removed.
+             The signal "fft_inst/blk000001d5/sig0000051c" is loadless and has been removed.
+              Loadless block "fft_inst/blk000001d5/blk000001e8" (MUX) removed.
+               The signal "fft_inst/blk000001d5/sig0000051d" is loadless and has been removed.
+                Loadless block "fft_inst/blk000001d5/blk000001e9" (MUX) removed.
+                 The signal "fft_inst/blk000001d5/sig0000051e" is loadless and has been removed.
+                  Loadless block "fft_inst/blk000001d5/blk000001ea" (MUX) removed.
+                   The signal "fft_inst/blk000001d5/sig0000051f" is loadless and has been removed.
+                    Loadless block "fft_inst/blk000001d5/blk000001eb" (MUX) removed.
+                     The signal "fft_inst/blk000001d5/sig00000520" is loadless and has been removed.
+                      Loadless block "fft_inst/blk000001d5/blk000001ec" (MUX) removed.
+                       The signal "fft_inst/blk000001d5/sig00000521" is loadless and has been removed.
+                        Loadless block "fft_inst/blk000001d5/blk000001ee" (MUX) removed.
+                         The signal "fft_inst/blk000001d5/sig00000525" is loadless and has been removed.
+                          Loadless block "fft_inst/blk000001d5/blk000001fb" (ROM) removed.
+                       The signal "fft_inst/blk000001d5/sig00000524" is loadless and has been removed.
+                        Loadless block "fft_inst/blk000001d5/blk000001fa" (ROM) removed.
+                     The signal "fft_inst/blk000001d5/sig00000523" is loadless and has been removed.
+                      Loadless block "fft_inst/blk000001d5/blk000001f9" (ROM) removed.
+                   The signal "fft_inst/blk000001d5/sig00000515" is loadless and has been removed.
+                    Loadless block "fft_inst/blk000001d5/blk000001f1" (ROM) removed.
+                 The signal "fft_inst/blk000001d5/sig00000514" is loadless and has been removed.
+                  Loadless block "fft_inst/blk000001d5/blk000001f2" (ROM) removed.
+               The signal "fft_inst/blk000001d5/sig00000513" is loadless and has been removed.
+                Loadless block "fft_inst/blk000001d5/blk000001f3" (ROM) removed.
+             The signal "fft_inst/blk000001d5/sig00000512" is loadless and has been removed.
+              Loadless block "fft_inst/blk000001d5/blk000001f4" (ROM) removed.
+           The signal "fft_inst/blk000001d5/sig00000511" is loadless and has been removed.
+            Loadless block "fft_inst/blk000001d5/blk000001f5" (ROM) removed.
+         The signal "fft_inst/blk000001d5/sig00000510" is loadless and has been removed.
+          Loadless block "fft_inst/blk000001d5/blk000001f6" (ROM) removed.
+       The signal "fft_inst/blk000001d5/sig0000050f" is loadless and has been removed.
+        Loadless block "fft_inst/blk000001d5/blk000001f7" (ROM) removed.
+     The signal "fft_inst/blk000001d5/sig0000050e" is loadless and has been removed.
+      Loadless block "fft_inst/blk000001d5/blk000001ef" (ROM) removed.
+   The signal "fft_inst/blk000001d5/sig00000522" is loadless and has been removed.
+    Loadless block "fft_inst/blk000001d5/blk000001f8" (ROM) removed.
+ The signal "fft_inst/blk000001d5/sig0000050d" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001d5/blk000001f0" (ROM) removed.
+Loadless block "fft_inst/blk000001d5/blk000001d7" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001d8" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001d9" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001da" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001db" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001dc" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001dd" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001de" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001df" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001e0" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001e1" (XOR) removed.
+Loadless block "fft_inst/blk000001d5/blk000001ed" (XOR) removed.
+Loadless block "fft_inst/blk0000020c" (SFF) removed.
+ The signal "fft_inst/sig000001ed" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001fc" (ROM) removed.
+   The signal "fft_inst/sig000000b3" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000144/blk0000016a" (FF) removed.
+     The signal "fft_inst/blk00000144/sig00000458" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000144/blk00000151" (XOR) removed.
+Loadless block "fft_inst/blk0000020d" (SFF) removed.
+ The signal "fft_inst/sig000001ee" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001fd" (ROM) removed.
+   The signal "fft_inst/sig000000b4" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000144/blk00000169" (FF) removed.
+     The signal "fft_inst/blk00000144/sig00000457" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000144/blk00000150" (XOR) removed.
+Loadless block "fft_inst/blk0000020e" (SFF) removed.
+ The signal "fft_inst/sig000001ef" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001fe" (ROM) removed.
+   The signal "fft_inst/sig000000b5" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000144/blk00000168" (FF) removed.
+     The signal "fft_inst/blk00000144/sig00000456" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000144/blk0000014f" (XOR) removed.
+Loadless block "fft_inst/blk0000020f" (SFF) removed.
+ The signal "fft_inst/sig000001f0" is loadless and has been removed.
+  Loadless block "fft_inst/blk000001ff" (ROM) removed.
+Loadless block "fft_inst/blk00000210" (SFF) removed.
+ The signal "fft_inst/sig000001f1" is loadless and has been removed.
+  Loadless block "fft_inst/blk00000200" (ROM) removed.
+Loadless block "fft_inst/blk00000211" (SFF) removed.
+ The signal "fft_inst/sig000001f2" is loadless and has been removed.
+  Loadless block "fft_inst/blk00000201" (ROM) removed.
+Loadless block "fft_inst/blk0000022c" (SFF) removed.
+ The signal "fft_inst/sig000001fd" is loadless and has been removed.
+  Loadless block "fft_inst/blk0000021c" (ROM) removed.
+   The signal "fft_inst/sig000000a6" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000179/blk0000019f" (FF) removed.
+     The signal "fft_inst/blk00000179/sig000004a7" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000179/blk00000186" (XOR) removed.
+Loadless block "fft_inst/blk0000022d" (SFF) removed.
+ The signal "fft_inst/sig000001fe" is loadless and has been removed.
+  Loadless block "fft_inst/blk0000021d" (ROM) removed.
+   The signal "fft_inst/sig000000a7" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000179/blk0000019e" (FF) removed.
+     The signal "fft_inst/blk00000179/sig000004a6" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000179/blk00000185" (XOR) removed.
+Loadless block "fft_inst/blk0000022e" (SFF) removed.
+ The signal "fft_inst/sig000001ff" is loadless and has been removed.
+  Loadless block "fft_inst/blk0000021e" (ROM) removed.
+   The signal "fft_inst/sig000000a8" is loadless and has been removed.
+    Loadless block "fft_inst/blk00000179/blk0000019d" (FF) removed.
+     The signal "fft_inst/blk00000179/sig000004a5" is loadless and has been removed.
+      Loadless block "fft_inst/blk00000179/blk00000184" (XOR) removed.
+Loadless block "fft_inst/blk0000022f" (SFF) removed.
+ The signal "fft_inst/sig00000200" is loadless and has been removed.
+  Loadless block "fft_inst/blk0000021f" (ROM) removed.
+Loadless block "fft_inst/blk00000230" (SFF) removed.
+ The signal "fft_inst/sig00000201" is loadless and has been removed.
+  Loadless block "fft_inst/blk00000220" (ROM) removed.
+Loadless block "fft_inst/blk00000231" (SFF) removed.
+ The signal "fft_inst/sig00000202" is loadless and has been removed.
+  Loadless block "fft_inst/blk00000221" (ROM) removed.
+The signal "decimate_inst/rfd" is sourceless and has been removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000000d" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000002e" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000045" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000093" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk00000046" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig00000078" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000048" (SFF) removed.
+        The signal "decimate_inst/blk00000003/sig000000ac" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000049" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000094" is sourceless and has been
+removed.
+           Sourceless block "decimate_inst/blk00000003/blk0000004b" (SFF) removed.
+            The signal "decimate_inst/blk00000003/sig000000c3" is sourceless and has been
+removed.
+             Sourceless block "decimate_inst/blk00000003/blk0000004c" (SFF) removed.
+              The signal "decimate_inst/blk00000003/sig000000ad" is sourceless and has been
+removed.
+               Sourceless block "decimate_inst/blk00000003/blk0000004e" (SFF) removed.
+                The signal "decimate_inst/blk00000003/sig000000d8" is sourceless and has been
+removed.
+                 Sourceless block "decimate_inst/blk00000003/blk0000004f" (SFF) removed.
+                  The signal "decimate_inst/blk00000003/sig000000c4" is sourceless and has been
+removed.
+                   Sourceless block "decimate_inst/blk00000003/blk00000051" (SFF) removed.
+                    The signal "decimate_inst/blk00000003/sig000000eb" is sourceless and has been
+removed.
+                     Sourceless block "decimate_inst/blk00000003/blk00000052" (SFF) removed.
+                      The signal "decimate_inst/blk00000003/sig000000d9" is sourceless and has been
+removed.
+                       Sourceless block "decimate_inst/blk00000003/blk00000055" (SFF) removed.
+                        The signal "decimate_inst/blk00000003/sig000000fd" is sourceless and has been
+removed.
+                         Sourceless block "decimate_inst/blk00000003/blk00000056" (SFF) removed.
+                          The signal "decimate_inst/blk00000003/sig000000ec" is sourceless and has been
+removed.
+                           Sourceless block "decimate_inst/blk00000003/blk00000054" (SFF) removed.
+                            The signal "decimate_inst/blk00000003/sig0000001b" is sourceless and has been
+removed.
+                             Sourceless block "decimate_inst/blk00000003/blk00000006" (SFF) removed.
+                              The signal "decimate_inst/blk00000003/sig0000001e" is sourceless and has been
+removed.
+                               Sourceless block "decimate_inst/blk00000003/blk000000a4" (ROM) removed.
+                                The signal "decimate_inst/blk00000003/sig00000022" is sourceless and has been
+removed.
+                                 Sourceless block "decimate_inst/blk00000003/blk00000008" (SFF) removed.
+                                  The signal "decimate_inst/blk00000003/sig00000023" is sourceless and has been
+removed.
+                                   Sourceless block "decimate_inst/blk00000003/blk000000d5" (ROM) removed.
+                                    The signal "decimate_inst/blk00000003/sig00000033" is sourceless and has been
+removed.
+                                     Sourceless block "decimate_inst/blk00000003/blk00000010" (SFF) removed.
+                                      The signal "decimate_inst/blk00000003/sig00000031" is sourceless and has been
+removed.
+                                       Sourceless block "decimate_inst/blk00000003/blk0000000f" (SFF) removed.
+                                        The signal "decimate_inst/blk00000003/sig00000032" is sourceless and has been
+removed.
+                                         Sourceless block "decimate_inst/blk00000003/blk000000f2" (ROM) removed.
+                                          The signal "decimate_inst/blk00000003/sig000001c2" is sourceless and has been
+removed.
+                                           Sourceless block "decimate_inst/blk00000003/blk000000e3" (FF) removed.
+                                            The signal "decimate_inst/blk00000003/sig0000002f" is sourceless and has been
+removed.
+                                             Sourceless block "decimate_inst/blk00000003/blk0000000e" (SFF) removed.
+                                              The signal "decimate_inst/blk00000003/sig00000030" is sourceless and has been
+removed.
+                                               Sourceless block "decimate_inst/blk00000003/blk00000063" (SFF) removed.
+                                                The signal "decimate_inst/blk00000003/sig0000012e" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk00000064" (SFF) removed.
+*The signal "decimate_inst/blk00000003/sig00000130" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk00000058" (SFF) removed.
+*  The signal "decimate_inst/blk00000003/sig00000132" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000059" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000133" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk0000005a" (SFF) removed.
+*      The signal "decimate_inst/blk00000003/sig00000134" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk00000088" (SFF) removed.
+*        The signal "decimate_inst/blk00000003/sig0000018d" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk00000089" (SFF) removed.
+*          The signal "decimate_inst/blk00000003/sig00000189" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk00000086" (SFF) removed.
+*            The signal "decimate_inst/blk00000003/sig0000018b" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000087" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000018c" is sourceless and has been
+removed.
+*               Sourceless block "decimate_inst/blk00000003/blk000000f3" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001bf" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000e1" (FF) removed.
+*                  The signal "decimate_inst/rdy" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000100" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001c8" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000f6" (FF) removed.
+*                  The signal "decimate_inst/dout<7>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000101" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001c9" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000f7" (FF) removed.
+*                  The signal "decimate_inst/dout<6>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000102" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001ca" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000f8" (FF) removed.
+*                  The signal "decimate_inst/dout<5>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000103" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001cb" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000f9" (FF) removed.
+*                  The signal "decimate_inst/dout<4>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000104" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001cc" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000fa" (FF) removed.
+*                  The signal "decimate_inst/dout<3>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000105" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001cd" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000fb" (FF) removed.
+*                  The signal "decimate_inst/dout<2>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000106" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001ce" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000fc" (FF) removed.
+*                  The signal "decimate_inst/dout<1>" is sourceless and has been removed.
+*               Sourceless block "decimate_inst/blk00000003/blk00000107" (ROM) removed.
+*                The signal "decimate_inst/blk00000003/sig000001cf" is sourceless and has been
+removed.
+*                 Sourceless block "decimate_inst/blk00000003/blk000000fd" (FF) removed.
+*                  The signal "decimate_inst/dout<0>" is sourceless and has been removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000c8" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig000001a5" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000097" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig000001a6" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000c9" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig00000191" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000008d" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000192" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000ca" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig0000018f" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000008c" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000190" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000cb" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig000001a3" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000096" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig000001a4" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000cc" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig000001a1" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000095" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig000001a2" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000cd" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig0000019f" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000094" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig000001a0" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000ce" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig0000019d" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000093" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000019e" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000cf" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig0000019b" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000092" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000019c" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000d0" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig00000199" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000091" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000019a" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000d1" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig00000197" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000090" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000198" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000d2" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig00000195" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000008f" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000196" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000d3" (ROM) removed.
+*            The signal "decimate_inst/blk00000003/sig00000193" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000008e" (SFF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000194" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk000000e7" (ROM) removed.
+*        The signal "decimate_inst/blk00000003/sig000001bd" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk000000df" (FF) removed.
+*          The signal "decimate_inst/blk00000003/sig00000187" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk000000ea" (ROM) removed.
+*        The signal "decimate_inst/blk00000003/sig000001bc" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk000000de" (FF) removed.
+*          The signal "decimate_inst/blk00000003/sig00000186" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk000000f0" (ROM) removed.
+*        The signal "decimate_inst/blk00000003/sig000001c5" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk000000e6" (FF) removed.
+*          The signal "decimate_inst/blk00000003/sig00000188" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000b9" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig0000015b" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000075" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000015c" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000ba" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000147" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006b" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000148" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000bb" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000145" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006a" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000146" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000bc" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000143" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000069" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000144" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000bd" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000141" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000068" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000142" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000be" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig0000013f" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000067" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000140" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000bf" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000159" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000074" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000015a" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c0" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000157" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000073" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000158" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c1" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000155" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000072" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000156" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c2" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000153" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000071" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000154" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c3" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000151" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000070" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000152" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c4" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig0000014f" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006f" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000150" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c5" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig0000014d" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006e" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000014e" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c6" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig0000014b" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006d" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000014c" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000c7" (ROM) removed.
+*  The signal "decimate_inst/blk00000003/sig00000149" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000006c" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000014a" is sourceless and has been
+removed.
+                                               Sourceless block "decimate_inst/blk00000003/blk000000e8" (ROM) removed.
+                                                The signal "decimate_inst/blk00000003/sig000001ba" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk000000dc" (FF) removed.
+*The signal "decimate_inst/blk00000003/sig0000012d" is sourceless and has been
+removed.
+                                               Sourceless block "decimate_inst/blk00000003/blk000000ef" (ROM) removed.
+                                                The signal "decimate_inst/blk00000003/sig000001c4" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk000000e5" (FF) removed.
+*The signal "decimate_inst/blk00000003/sig0000012f" is sourceless and has been
+removed.
+                                             Sourceless block "decimate_inst/blk00000003/blk000000ec" (ROM) removed.
+                                              The signal "decimate_inst/blk00000003/sig000001b9" is sourceless and has been
+removed.
+                                               Sourceless block "decimate_inst/blk00000003/blk000000da" (SFF) removed.
+                                                The signal "decimate_inst/blk00000003/sig0000013d" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk00000065" (SFF) removed.
+*The signal "decimate_inst/blk00000003/sig0000013e" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk00000066" (SFF) removed.
+*  The signal "decimate_inst/blk00000003/sig000000fe" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000005b" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000135" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk0000005c" (SFF) removed.
+*      The signal "decimate_inst/blk00000003/sig00000136" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk0000005d" (SFF) removed.
+*        The signal "decimate_inst/blk00000003/sig00000137" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk0000008a" (SFF) removed.
+*          The signal "decimate_inst/blk00000003/sig0000018e" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk0000008b" (SFF) removed.
+*            The signal "decimate_inst/blk00000003/sig0000016c" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000152" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000016d" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000154" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000016e" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000156" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000171" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000158" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig0000016f" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000015a" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000170" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000015c" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000172" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk0000015e" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000173" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000160" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000176" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000162" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000174" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000164" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000175" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000166" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000177" is sourceless and has been
+removed.
+*             Sourceless block "decimate_inst/blk00000003/blk00000168" (FF) removed.
+*              The signal "decimate_inst/blk00000003/sig00000178" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk000000eb" (ROM) removed.
+*          The signal "decimate_inst/blk00000003/sig000001be" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk000000e0" (FF) removed.
+*            The signal "decimate_inst/blk00000003/sig00000185" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000134" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig000000ff" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000136" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000102" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000138" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000100" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000013a" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000101" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000013c" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000103" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000013e" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000104" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000140" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000107" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000142" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000105" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000144" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000106" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000146" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000010a" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000148" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000108" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000014a" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000109" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000014c" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000010d" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000014e" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000010b" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000150" (FF) removed.
+*    The signal "decimate_inst/blk00000003/sig0000010c" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk000000a9" (ROM) removed.
+*The signal "decimate_inst/blk00000003/sig00000026" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk0000000a" (FF) removed.
+*  The signal "decimate_inst/blk00000003/sig00000028" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk0000005e" (SFF) removed.
+*    The signal "decimate_inst/blk00000003/sig00000138" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk0000005f" (SFF) removed.
+*      The signal "decimate_inst/blk00000003/sig00000139" is sourceless and has been
+removed.
+*       Sourceless block "decimate_inst/blk00000003/blk00000060" (SFF) removed.
+*        The signal "decimate_inst/blk00000003/sig0000013a" is sourceless and has been
+removed.
+*         Sourceless block "decimate_inst/blk00000003/blk00000061" (SFF) removed.
+*          The signal "decimate_inst/blk00000003/sig0000013b" is sourceless and has been
+removed.
+*           Sourceless block "decimate_inst/blk00000003/blk00000062" (SFF) removed.
+*            The signal "decimate_inst/blk00000003/sig0000013c" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk000000a5" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig00000027" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk000000e9" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig000001bb" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk000000dd" (FF) removed.
+*      The signal "decimate_inst/blk00000003/sig0000012c" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk0000000b" (FF) removed.
+*  The signal "decimate_inst/blk00000003/sig0000002a" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk000000a6" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig00000029" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk0000000c" (FF) removed.
+*  The signal "decimate_inst/blk00000003/sig0000002c" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk000000ab" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig0000002b" is sourceless and has been
+removed.
+                                                 Sourceless block "decimate_inst/blk00000003/blk000000f1" (ROM) removed.
+*The signal "decimate_inst/blk00000003/sig000001c0" is sourceless and has been
+removed.
+* Sourceless block "decimate_inst/blk00000003/blk000000e2" (FF) removed.
+*  The signal "decimate_inst/blk00000003/sig000001c1" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000108" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig000001d0" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk000000fe" (FF) removed.
+*      The signal "decimate_inst/blk00000003/sig000001c6" is sourceless and has been
+removed.
+*   Sourceless block "decimate_inst/blk00000003/blk00000109" (ROM) removed.
+*    The signal "decimate_inst/blk00000003/sig000001d1" is sourceless and has been
+removed.
+*     Sourceless block "decimate_inst/blk00000003/blk000000ff" (FF) removed.
+*      The signal "decimate_inst/blk00000003/sig000001c7" is sourceless and has been
+removed.
+                                       Sourceless block "decimate_inst/blk00000003/blk000000a7" (ROM) removed.
+                                        The signal "decimate_inst/blk00000003/sig0000001c" is sourceless and has been
+removed.
+                                       Sourceless block "decimate_inst/blk00000003/blk000000a8" (ROM) removed.
+                                        The signal "decimate_inst/blk00000003/sig0000001f" is sourceless and has been
+removed.
+                                         Sourceless block "decimate_inst/blk00000003/blk00000007" (SFF) removed.
+                                          The signal "decimate_inst/blk00000003/sig00000021" is sourceless and has been
+removed.
+                                           Sourceless block "decimate_inst/blk00000003/blk000000d4" (ROM) removed.
+                                            The signal "decimate_inst/blk00000003/sig000001b6" is sourceless and has been
+removed.
+                                       Sourceless block "decimate_inst/blk00000003/blk000000aa" (ROM) removed.
+                                        The signal "decimate_inst/blk00000003/sig00000024" is sourceless and has been
+removed.
+                                         Sourceless block "decimate_inst/blk00000003/blk00000009" (SFF) removed.
+                                          The signal "decimate_inst/blk00000003/sig00000025" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000001e" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000004e" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk000000f4" (ROM) removed.
+    The signal "decimate_inst/blk00000003/sig000001c3" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk000000e4" (FF) removed.
+      The signal "decimate_inst/blk00000003/sig0000002d" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000116" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000110" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000078" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000015f" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000118" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig0000010e" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000076" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000015d" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000011a" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig0000010f" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000077" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000015e" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000011c" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000113" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007b" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000162" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000011e" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000111" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000079" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000160" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000120" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000112" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007a" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000161" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000122" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000116" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007e" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000165" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000124" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000114" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007c" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000163" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000126" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000115" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007d" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000164" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000128" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000117" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000007f" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000166" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000012a" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000118" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000080" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000167" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000012c" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig0000011b" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000083" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000016a" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000012e" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig00000119" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000081" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000168" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000130" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig0000011a" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000082" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000169" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000132" (FF) removed.
+  The signal "decimate_inst/blk00000003/sig0000011c" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000084" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000016b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000018" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000001d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000020" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000034" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000011" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000036" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000012" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000038" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk000000b5" (ROM) removed.
+    The signal "decimate_inst/blk00000003/sig0000006b" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk00000039" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig0000006c" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000ad" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000051" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk0000002c" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000052" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000ae" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000059" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000030" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig0000005a" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000af" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000053" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk0000002d" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000054" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b1" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000067" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000037" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000068" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b3" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000065" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000036" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000066" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b8" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000063" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000035" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000064" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000d7" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000057" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk0000002f" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000058" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000d9" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000055" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk0000002e" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000056" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000ed" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000069" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000038" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig0000006a" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000ee" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig00000061" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000034" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000062" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk0000010d" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d2" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk0000010c" (MUX) removed.
+          The signal "decimate_inst/blk00000003/sig0000005d" is sourceless and has been
+removed.
+           Sourceless block "decimate_inst/blk00000003/blk00000032" (SFF) removed.
+            The signal "decimate_inst/blk00000003/sig0000005e" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk0000010e" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d3" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk0000010f" (MUX) removed.
+        The signal "decimate_inst/blk00000003/sig0000005f" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000033" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig00000060" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000112" (MUX) removed.
+        The signal "decimate_inst/blk00000003/sig0000005b" is sourceless and has been
+removed.
+         Sourceless block "decimate_inst/blk00000003/blk00000031" (SFF) removed.
+          The signal "decimate_inst/blk00000003/sig0000005c" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk000000b6" (ROM) removed.
+    The signal "decimate_inst/blk00000003/sig0000006d" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000003a" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig0000006e" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b0" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001b3" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b2" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001b4" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000d6" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001b7" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000110" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d4" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000111" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d5" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000113" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d6" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk00000114" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001d7" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk000000b7" (ROM) removed.
+    The signal "decimate_inst/blk00000003/sig0000006f" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000003b" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig00000070" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000b4" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001b5" is sourceless and has been
+removed.
+       Sourceless block "decimate_inst/blk00000003/blk000000d8" (ROM) removed.
+        The signal "decimate_inst/blk00000003/sig000001b8" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000013" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000003a" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000014" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000003c" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk000000ac" (ROM) removed.
+  The signal "decimate_inst/blk00000003/sig0000004d" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000001d" (FF) removed.
+   Sourceless block "decimate_inst/blk00000003/blk000000f5" (FF) removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000010a" (FF) removed.
+    The signal "decimate_inst/blk00000003/sig00000131" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000010b" (FF) removed.
+    The signal "decimate_inst/blk00000003/sig0000018a" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk00000098" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001a7" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk00000099" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001a8" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009a" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001a9" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009b" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001aa" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009c" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001ab" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009d" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001ac" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009e" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001ad" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000009f" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001ae" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk000000a0" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001af" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk000000a1" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001b0" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk000000a2" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001b1" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk000000a3" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig000001b2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000035" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000037" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000039" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000003b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000003d" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000015" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000003e" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000003c" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig0000004f" is sourceless and has been
+removed.
+     Sourceless block "decimate_inst/blk00000003/blk0000002b" (SFF) removed.
+      The signal "decimate_inst/blk00000003/sig00000050" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000003f" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000016" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000040" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000003d" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000071" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000041" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000017" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000042" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000003e" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000072" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000043" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000018" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000044" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk0000003f" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000073" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000045" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk00000019" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000046" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000040" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000074" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000047" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000001a" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig00000048" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000041" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000075" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000049" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000001b" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000004a" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000042" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000076" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000004b" is sourceless and has been
+removed.
+ Sourceless block "decimate_inst/blk00000003/blk0000001c" (SFF) removed.
+  The signal "decimate_inst/blk00000003/sig0000004c" is sourceless and has been
+removed.
+   Sourceless block "decimate_inst/blk00000003/blk00000043" (SFF) removed.
+    The signal "decimate_inst/blk00000003/sig00000077" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000079" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007a" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007c" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007e" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000007f" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000080" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000081" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000082" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000083" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000084" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000085" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000086" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000087" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000088" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000089" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008a" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008c" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008e" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000008f" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000090" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000091" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000092" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000095" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000096" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000097" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000098" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000099" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009a" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009c" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009e" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000009f" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000a9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000aa" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ab" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ae" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000af" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000b9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ba" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000bb" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000bc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000bd" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000be" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000bf" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000c9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ca" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000cb" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000cc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000cd" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ce" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000cf" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000d7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000da" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000db" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000dc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000dd" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000de" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000df" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000e9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ea" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ed" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ee" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000ef" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000f9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000fa" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000fb" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000000fc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000011d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000011e" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000011f" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000120" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000121" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000122" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000123" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000124" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000125" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000126" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000127" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000128" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000129" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000012a" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000012b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000179" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017a" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017b" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017c" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017d" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017e" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig0000017f" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000180" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000181" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000182" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000183" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000184" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001d8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001d9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001da" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001db" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001dc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001dd" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001de" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001df" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001e9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ea" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001eb" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ec" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ed" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ee" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ef" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f0" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f1" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f2" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f3" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f4" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f5" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f6" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f7" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f8" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001f9" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001fa" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001fb" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001fc" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001fd" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001fe" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig000001ff" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000200" is sourceless and has been
+removed.
+The signal "decimate_inst/blk00000003/sig00000201" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<8>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000044d" (ROM) removed.
+  The signal "fft_inst/sig0000036f" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003c2" (XOR) removed.
+    The signal "fft_inst/blk000003b1/sig000005dc" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003c5" (SFF) removed.
+The signal "fft_inst/xn_index<7>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000044e" (ROM) removed.
+  The signal "fft_inst/sig0000036e" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003ce" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e0" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b4" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005ce" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003c6" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b5" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005cf" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<6>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000044c" (ROM) removed.
+  The signal "fft_inst/sig0000036d" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003cf" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e1" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b6" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005d0" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003c7" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b7" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005d1" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<5>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000044b" (ROM) removed.
+  The signal "fft_inst/sig0000036c" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d0" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e2" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b8" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005d2" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003c8" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003b9" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005d3" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<4>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000044a" (ROM) removed.
+  The signal "fft_inst/sig0000036b" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d1" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e3" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003ba" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005d4" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003c9" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003bb" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005d5" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<3>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk00000449" (ROM) removed.
+  The signal "fft_inst/sig0000036a" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d2" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e4" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003bc" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005d6" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003ca" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003bd" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005d7" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<2>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk00000448" (ROM) removed.
+  The signal "fft_inst/sig00000369" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d3" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e5" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003be" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005d8" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003cb" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003bf" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005d9" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<1>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk00000447" (ROM) removed.
+  The signal "fft_inst/sig00000368" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d4" (ROM) removed.
+    The signal "fft_inst/blk000003b1/sig000005e6" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003c0" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005da" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003cc" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003c1" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005db" is sourceless and has been
+removed.
+The signal "fft_inst/xn_index<0>" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk00000446" (ROM) removed.
+  The signal "fft_inst/sig00000367" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk000003b1/blk000003d5" (BUF) removed.
+    The signal "fft_inst/blk000003b1/sig000005df" is sourceless and has been
+removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003c3" (XOR) removed.
+      The signal "fft_inst/blk000003b1/sig000005dd" is sourceless and has been
+removed.
+       Sourceless block "fft_inst/blk000003b1/blk000003cd" (SFF) removed.
+     Sourceless block "fft_inst/blk000003b1/blk000003c4" (MUX) removed.
+      The signal "fft_inst/blk000003b1/sig000005de" is sourceless and has been
+removed.
+The signal
+"fft_inst/U0/i_synth/non_floating_point.arch_e.xfft_inst/single_channel.datapath
+/has_overflow.ovflo_gated" is sourceless and has been removed.
+The signal "fft_inst/sig0000004c" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000002e" (FF) removed.
+ Sourceless block "fft_inst/blk00000469" (ROM) removed.
+  The signal "fft_inst/sig000003a9" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk0000046b" (ROM) removed.
+    The signal "fft_inst/sig0000039f" is sourceless and has been removed.
+     Sourceless block "fft_inst/blk00000457" (FF) removed.
+ Sourceless block "fft_inst/blk0000046a" (ROM) removed.
+  The signal "fft_inst/sig000003aa" is sourceless and has been removed.
+The signal "fft_inst/sig00000049" is sourceless and has been removed.
+The signal "fft_inst/sig000001fb" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000021a" (SFF) removed.
+  The signal "fft_inst/sig000000a4" is sourceless and has been removed.
+The signal "fft_inst/sig000001fc" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000021b" (SFF) removed.
+  The signal "fft_inst/sig000000a5" is sourceless and has been removed.
+The signal "fft_inst/sig0000020b" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000023a" (SFF) removed.
+  The signal "fft_inst/sig0000009a" is sourceless and has been removed.
+   Sourceless block "fft_inst/blk00000452" (ROM) removed.
+    The signal "fft_inst/sig0000039a" is sourceless and has been removed.
+The signal "fft_inst/sig0000020c" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk0000023b" (SFF) removed.
+  The signal "fft_inst/sig0000009b" is sourceless and has been removed.
+The signal "fft_inst/sig00000006" is sourceless and has been removed.
+The signal "fft_inst/sig00000091" is sourceless and has been removed.
+The signal "fft_inst/sig0000025c" is sourceless and has been removed.
+ Sourceless block "fft_inst/blk000002a8" (SFF) removed.
+The signal "fft_inst/sig0000039d" is sourceless and has been removed.
+The signal "fft_inst/blk0000023c/blk0000023d/sig0000052e" is sourceless and has
+been removed.
+The signal "fft_inst/blk0000023c/blk0000023d/sig0000052f" is sourceless and has
+been removed.
+The signal "fft_inst/blk0000023c/blk0000023d/sig00000530" is sourceless and has
+been removed.
+ Sourceless block "fft_inst/blk0000023c/blk0000023d/blk00000241" (FF) removed.
+The signal "fft_inst/blk000003b1/sig000005cd" is sourceless and has been
+removed.
+The signal "fft_inst/blk000003b1/sig000005cc" is sourceless and has been
+removed.
+The signal "sine_gen_inst/sig0000001b" is sourceless and has been removed.
+ Sourceless block "sine_gen_inst/blk00000003" (FF) removed.
+  The signal "sine_gen_inst/sig00000024" is sourceless and has been removed.
+The signal "mag_inst/your_instance_name/blk00000032/sig000000bd" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk00000032/sig000000bf" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk00000032/sig000000cf" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk00000032/blk00000036" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk0000004d/sig000000e5" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk0000004d/sig000000e7" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk0000004d/sig000000f9" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk0000004d/blk00000051" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk0000006b/sig0000010c" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk0000006b/sig0000010e" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk0000006b/sig0000011c" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk0000006b/blk0000006f" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk00000083/sig00000133" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk00000083/sig00000135" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk00000083/sig00000149" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk00000083/blk00000087" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk000000ac/sig0000015a" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000ac/sig0000015c" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000ac/sig00000167" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk000000ac/blk000000b0" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk000000c0/sig0000017f" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000c0/sig00000181" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000c0/sig00000197" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk000000c0/blk000000c4" (XOR)
+removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001b6" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001b8" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001b9" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001ba" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001bb" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001bc" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001bd" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001be" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001bf" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001c0" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001c1" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001c2" is sourceless
+and has been removed.
+The signal "mag_inst/your_instance_name/blk000000e4/sig000001d0" is sourceless
+and has been removed.
+ Sourceless block "mag_inst/your_instance_name/blk000000e4/blk000000e8" (XOR)
+removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "decimate_countdown<6>" is unused and has been removed.
+ Unused block "decimate_countdown_6" (FF) removed.
+  The signal "_n0270_inv" is unused and has been removed.
+   Unused block "_n0270_inv1" (ROM) removed.
+    The signal "decimate_countdown[31]_GND_6_o_equal_541_o" is unused and has been
+removed.
+     Unused block "decimate_countdown[31]_GND_6_o_equal_541_o<31>" (ROM) removed.
+      The signal "decimate_countdown<1>" is unused and has been removed.
+       Unused block "decimate_countdown_1" (FF) removed.
+        The signal "GND_6_o_GND_6_o_mux_564_OUT<1>" is unused and has been removed.
+         Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT121" (ROM) removed.
+          The signal "GND_6_o_GND_6_o_sub_542_OUT<1>" is unused and has been removed.
+           Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<1>" (XOR) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<0>" is unused and has been
+removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<0>" (MUX) removed.
+              The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<0>_rt" is unused and has
+been removed.
+               Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<0>_rt" (ROM) removed.
+                The signal "decimate_countdown<0>" is unused and has been removed.
+                 Unused block "decimate_countdown_0" (FF) removed.
+                  The signal "GND_6_o_GND_6_o_mux_564_OUT<0>" is unused and has been removed.
+                   Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT11" (ROM) removed.
+                    The signal "GND_6_o_GND_6_o_sub_542_OUT<0>" is unused and has been removed.
+                     Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<0>" (XOR) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<1>" is unused and has
+been removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<1>_INV_0" (BUF)
+removed.
+      The signal "decimate_countdown<2>" is unused and has been removed.
+       Unused block "decimate_countdown_2" (FF) removed.
+        The signal "GND_6_o_GND_6_o_mux_564_OUT<2>" is unused and has been removed.
+         Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT231" (ROM) removed.
+          The signal "GND_6_o_GND_6_o_sub_542_OUT<2>" is unused and has been removed.
+           Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<2>" (XOR) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<1>" is unused and has been
+removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<1>" (MUX) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<2>" is unused and has
+been removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<2>_INV_0" (BUF)
+removed.
+      The signal "decimate_countdown<3>" is unused and has been removed.
+       Unused block "decimate_countdown_3" (FF) removed.
+        The signal "GND_6_o_GND_6_o_mux_564_OUT<3>" is unused and has been removed.
+         Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT261" (ROM) removed.
+          The signal "GND_6_o_GND_6_o_sub_542_OUT<3>" is unused and has been removed.
+           Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<3>" (XOR) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<2>" is unused and has been
+removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<2>" (MUX) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<3>" is unused and has
+been removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<3>_INV_0" (BUF)
+removed.
+      The signal "decimate_countdown<4>" is unused and has been removed.
+       Unused block "decimate_countdown_4" (FF) removed.
+        The signal "GND_6_o_GND_6_o_mux_564_OUT<4>" is unused and has been removed.
+         Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT271" (ROM) removed.
+          The signal "GND_6_o_GND_6_o_sub_542_OUT<4>" is unused and has been removed.
+           Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<4>" (XOR) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<3>" is unused and has been
+removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<3>" (MUX) removed.
+            The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<4>" is unused and has
+been removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<4>_INV_0" (BUF)
+removed.
+      The signal "N2" is unused and has been removed.
+       Unused block "decimate_countdown[31]_GND_6_o_equal_541_o<31>_SW0" (ROM) removed.
+        The signal "decimate_countdown<5>" is unused and has been removed.
+         Unused block "decimate_countdown_5" (FF) removed.
+          The signal "GND_6_o_GND_6_o_mux_564_OUT<5>" is unused and has been removed.
+           Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT281" (ROM) removed.
+            The signal "GND_6_o_GND_6_o_sub_542_OUT<5>" is unused and has been removed.
+             Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<5>" (XOR) removed.
+              The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<4>" is unused and has been
+removed.
+               Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<4>" (MUX) removed.
+              The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<5>" is unused and has
+been removed.
+               Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<5>_INV_0" (BUF)
+removed.
+  The signal "GND_6_o_GND_6_o_mux_564_OUT<6>" is unused and has been removed.
+   Unused block "Mmux_GND_6_o_GND_6_o_mux_564_OUT291" (ROM) removed.
+    The signal "GND_6_o_GND_6_o_sub_542_OUT<6>" is unused and has been removed.
+     Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_xor<6>" (XOR) removed.
+      The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<5>" is unused and has been
+removed.
+       Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_cy<5>" (MUX) removed.
+      The signal "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<6>" is unused and has
+been removed.
+       Unused block "Msub_GND_6_o_GND_6_o_sub_542_OUT<31:0>_lut<6>_INV_0" (BUF)
+removed.
+The signal "decimate_we" is unused and has been removed.
+ Unused block "decimate_we" (FF) removed.
+  The signal "decimate_we_rstpot" is unused and has been removed.
+   Unused block "decimate_we_rstpot" (ROM) removed.
+Unused block "decimate_inst/blk00000001" (ONE) removed.
+Unused block "decimate_inst/blk00000002" (ZERO) removed.
+Unused block "decimate_inst/blk00000003/blk00000004" (ZERO) removed.
+Unused block "decimate_inst/blk00000003/blk00000005" (ONE) removed.
+Unused block "decimate_inst/blk00000003/blk0000001f" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000020" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000021" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000022" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000023" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000024" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000025" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000026" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000027" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000028" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000029" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk0000002a" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000044" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk00000047" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk0000004a" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk0000004d" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk00000050" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk00000053" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk00000057" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk00000085" (DSP48A1) removed.
+Unused block "decimate_inst/blk00000003/blk000000db" (SFF) removed.
+Unused block "decimate_inst/blk00000003/blk00000115" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000117" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000119" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000011b" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000011d" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000011f" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000121" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000123" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000125" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000127" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000129" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000012b" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000012d" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000012f" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000131" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000133" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000135" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000137" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000139" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000013b" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000013d" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000013f" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000141" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000143" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000145" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000147" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000149" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000014b" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000014d" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000014f" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000151" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000153" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000155" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000157" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000159" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000015b" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000015d" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk0000015f" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000161" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000163" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000165" (SRLC16E) removed.
+Unused block "decimate_inst/blk00000003/blk00000167" (SRLC16E) removed.
+Unused block "fft_inst/blk0000020a" (ROM) removed.
+Unused block "fft_inst/blk0000020b" (ROM) removed.
+Unused block "fft_inst/blk0000022a" (ROM) removed.
+Unused block "fft_inst/blk0000022b" (ROM) removed.
+Unused block "fft_inst/blk0000023c/blk0000023d/blk0000023e" (ZERO) removed.
+Unused block "fft_inst/blk0000023c/blk0000023d/blk0000023f" (ONE) removed.
+Unused block "fft_inst/blk0000023c/blk0000023d/blk00000240" (SRLC16E) removed.
+Unused block "fft_inst/blk000002ac" (SFF) removed.
+Unused block "fft_inst/blk000003b1/blk000003b2" (ONE) removed.
+Unused block "fft_inst/blk000003b1/blk000003b3" (ZERO) removed.
+Unused block "mag_inst/your_instance_name/blk00000032/blk00000038" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk00000032/blk0000003e" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk0000004d/blk00000053" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk0000004d/blk0000005a" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk0000006b/blk00000071" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk0000006b/blk00000076" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk00000083/blk00000089" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk00000083/blk00000091" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000ac/blk000000b2" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000ac/blk000000b6" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000c0/blk000000c6" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000c0/blk000000cf" (MUX)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000e7" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000ea" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000eb" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000ec" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000ed" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000ee" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000ef" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000f0" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000f1" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000f2" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000f3" (XOR)
+removed.
+Unused block "mag_inst/your_instance_name/blk000000e4/blk000000f4" (MUX)
+removed.
+Unused block "sine_gen_inst/blk00000014/blk00000044" (MUX) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		Inst_averaging/avg_ram_inst/XST_GND
+VCC 		Inst_averaging/avg_ram_inst/XST_VCC
+GND
+		Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst/U0/xst_fifo_generator/gconvfifo.
+rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_m
+em_gen/valid.cstr/XST_GND
+GND 		Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst/XST_GND
+GND 		XST_GND
+VCC 		XST_VCC
+VCC 		fft_inst/blk00000001
+GND 		fft_inst/blk00000002
+GND 		fft_inst/blk000000e5/blk000000e6
+GND 		fft_inst/blk00000118/blk00000119/blk0000011a
+VCC 		fft_inst/blk00000118/blk00000119/blk0000011b
+GND 		fft_inst/blk0000013e/blk0000013f/blk00000140
+VCC 		fft_inst/blk0000013e/blk0000013f/blk00000141
+FDRE 		fft_inst/blk00000267
+   optimized to 0
+GND 		fft_inst/blk000002b3/blk000002b4/blk000002b5
+VCC 		fft_inst/blk000002b3/blk000002b4/blk000002b6
+LUT3 		fft_inst/blk000002d5
+   optimized to 1
+LUT3 		fft_inst/blk000002d6
+   optimized to 1
+LUT3 		fft_inst/blk000002d7
+   optimized to 1
+VCC 		fft_inst/blk000002e4/blk000002e5
+GND 		fft_inst/blk000002e4/blk000002e6
+LUT6 		fft_inst/blk0000031b
+   optimized to 0
+LUT6 		fft_inst/blk0000031c
+   optimized to 0
+LUT6 		fft_inst/blk0000031d
+   optimized to 0
+LUT6 		fft_inst/blk0000031e
+   optimized to 0
+LUT6 		fft_inst/blk0000031f
+   optimized to 0
+LUT6 		fft_inst/blk00000320
+   optimized to 0
+LUT6 		fft_inst/blk00000321
+   optimized to 0
+LUT6 		fft_inst/blk00000322
+   optimized to 0
+LUT6 		fft_inst/blk00000323
+   optimized to 0
+GND 		fft_inst/blk00000363/blk00000364/blk00000365
+VCC 		fft_inst/blk00000363/blk00000364/blk00000366
+GND 		fft_inst/blk00000369/blk0000036a/blk0000036b
+VCC 		fft_inst/blk00000369/blk0000036a/blk0000036c
+VCC 		fft_inst/blk0000036f/blk00000370
+GND 		fft_inst/blk0000036f/blk00000371
+GND 		fft_inst/blk0000037c/blk0000037d/blk0000037e
+VCC 		fft_inst/blk0000037c/blk0000037d/blk0000037f
+GND 		fft_inst/blk00000382/blk00000383/blk00000384
+VCC 		fft_inst/blk00000382/blk00000383/blk00000385
+GND 		fft_inst/blk00000388/blk00000389/blk0000038a
+VCC 		fft_inst/blk00000388/blk00000389/blk0000038b
+GND 		fft_inst/blk0000038e/blk0000038f/blk00000390
+VCC 		fft_inst/blk0000038e/blk0000038f/blk00000391
+LUT2 		fft_inst/blk00000410
+   optimized to 1
+FDS 		fft_inst/blk00000455
+   optimized to 1
+LUT4 		fft_inst/blk00000477
+   optimized to 1
+VCC 		mag_inst/your_instance_name/blk00000001
+GND 		mag_inst/your_instance_name/blk00000002
+VCC 		mag_inst/your_instance_name/blk00000032/blk00000033
+GND 		mag_inst/your_instance_name/blk00000032/blk00000034
+VCC 		mag_inst/your_instance_name/blk0000004d/blk0000004e
+GND 		mag_inst/your_instance_name/blk0000004d/blk0000004f
+VCC 		mag_inst/your_instance_name/blk0000006b/blk0000006c
+GND 		mag_inst/your_instance_name/blk0000006b/blk0000006d
+VCC 		mag_inst/your_instance_name/blk00000083/blk00000084
+GND 		mag_inst/your_instance_name/blk00000083/blk00000085
+VCC 		mag_inst/your_instance_name/blk000000ac/blk000000ad
+GND 		mag_inst/your_instance_name/blk000000ac/blk000000ae
+VCC 		mag_inst/your_instance_name/blk000000c0/blk000000c1
+GND 		mag_inst/your_instance_name/blk000000c0/blk000000c2
+VCC 		mag_inst/your_instance_name/blk000000e4/blk000000e5
+GND 		mag_inst/your_instance_name/blk000000e4/blk000000e6
+VCC 		sine_gen_inst/blk00000001
+GND 		sine_gen_inst/blk00000002
+GND 		sine_gen_inst/blk00000014/blk00000015
+GND 		vga_ram_inst/XST_GND
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| adc_clk                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| adc_in<0>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<1>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<2>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<3>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<4>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<5>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<6>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| adc_in<7>                          | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| clk                                | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| leds<0>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<1>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<2>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<3>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<4>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<5>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<6>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| leds<7>                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| rst                                | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| rx                                 | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| sine_out<0>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<1>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<2>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<3>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<4>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<5>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<6>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| sine_out<7>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW | OFF          |          |          |
+| vga_blue<0>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_blue<1>                        | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_green<0>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_green<1>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_green<2>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_hs                             | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_red<0>                         | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_red<1>                         | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_red<2>                         | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| vga_vs                             | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

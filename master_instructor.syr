@@ -1,0 +1,1574 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+Reading design: master_instructor.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "master_instructor.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "master_instructor"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : master_instructor
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/fifo.vhd" into library work
+Parsing entity <fifo>.
+Parsing architecture <fifo_a> of entity <fifo>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/sine_gen.vhd" into library work
+Parsing entity <sine_gen>.
+Parsing architecture <sine_gen_a> of entity <sine_gen>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/dcm.vhd" into library work
+Parsing entity <dcm>.
+Parsing architecture <xilinx> of entity <dcm>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/vga_ram.vhd" into library work
+Parsing entity <vga_ram>.
+Parsing architecture <vga_ram_a> of entity <vga_ram>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/mag_sqrt.vhd" into library work
+Parsing entity <mag_sqrt>.
+Parsing architecture <mag_sqrt_a> of entity <mag_sqrt>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/avg_ram.vhd" into library work
+Parsing entity <avg_ram>.
+Parsing architecture <avg_ram_a> of entity <avg_ram>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/decimate.vhd" into library work
+Parsing entity <decimate>.
+Parsing architecture <decimate_a> of entity <decimate>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/serial_rx_fifo.vhd" into library work
+Parsing entity <serial_rx_fifo>.
+Parsing architecture <Behavioral> of entity <serial_rx_fifo>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/lib.vhd" into library work
+Parsing package <uas>.
+Parsing package body <uas>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/frame_types.vhd" into library work
+Parsing package <frame_types>.
+Parsing package body <frame_types>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/vga_configurable.vhd" into library work
+Parsing entity <vga_configurable>.
+Parsing architecture <Behavioral> of entity <vga_configurable>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/uart_comms.vhd" into library work
+Parsing entity <uart_comms>.
+Parsing architecture <Behavioral> of entity <uart_comms>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/mag.vhd" into library work
+Parsing entity <mag>.
+Parsing architecture <behave> of entity <mag>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/fft.vhd" into library work
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/averaging.vhd" into library work
+Parsing entity <averaging>.
+Parsing architecture <Behavioral> of entity <averaging>.
+Parsing VHDL file "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" into library work
+Parsing entity <master_instructor>.
+Parsing architecture <Behavioral> of entity <master_instructor>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <master_instructor> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <averaging> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <avg_ram> (architecture <avg_ram_a>) from library <work>.
+
+Elaborating entity <decimate> (architecture <decimate_a>) from library <work>.
+WARNING:HDLCompiler:1127 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" Line 402: Assignment to avg ignored, since the identifier is never used
+WARNING:HDLCompiler:92 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" Line 516: real_fft_clk should be on the sensitivity list of the process
+
+Elaborating entity <vga_ram> (architecture <vga_ram_a>) from library <work>.
+
+Elaborating entity <mag> (architecture <behave>) from library <work>.
+
+Elaborating entity <mag_sqrt> (architecture <mag_sqrt_a>) from library <work>.
+
+Elaborating entity <vga_configurable> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <sine_gen> (architecture <sine_gen_a>) from library <work>.
+
+Elaborating entity <uart_comms> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <serial_rx_fifo> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <fifo> (architecture <fifo_a>) from library <work>.
+
+Elaborating entity <dcm> (architecture <xilinx>) from library <work>.
+WARNING:HDLCompiler:89 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" Line 213: <fft> remains a black-box since it has no binding entity.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <master_instructor>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd".
+        clk_rate = 100000000
+        baud_rate = 500000
+        vga_colors_red_width = 3
+        vga_colors_green_width = 3
+        vga_colors_blue_width = 2
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 360: Output port <dout> of the instance <decimate_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 360: Output port <rdy> of the instance <decimate_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 360: Output port <rfd> of the instance <decimate_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 617: Output port <next_idx_out> of the instance <mag_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<0>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<1>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<2>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<8>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<9>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<10>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<11>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<12>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<13>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<14>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<15>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<16>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<17>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<18>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<19>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<20>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<21>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<22>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<23>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<24>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<25>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<26>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<27>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<28>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<29>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<30>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 699: Output port <frame<31>> of the instance <Inst_uart_comms> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 729: Output port <xn_index> of the instance <fft_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/master_instructor.vhd" line 729: Output port <ovflo> of the instance <fft_inst> is unconnected or connected to loadless signal.
+    Found 2-bit register for signal <vga_blue_in>.
+    Found 8-bit register for signal <sine_out>.
+    Found 16-bit register for signal <pinc_in>.
+    Found 18-bit register for signal <fft_scale>.
+    Found 32-bit register for signal <max_clock_counter_value>.
+    Found 32-bit register for signal <clock_counter_value>.
+    Found 8-bit register for signal <avg_val>.
+    Found 8-bit register for signal <adc_offset>.
+    Found 4-bit register for signal <decimate_rate>.
+    Found 32-bit register for signal <decimate_countdown>.
+    Found 1-bit register for signal <real_fft_clk>.
+    Found 1-bit register for signal <fft_waiting_to_write>.
+    Found 1-bit register for signal <last_vga_v_blanking>.
+    Found 1-bit register for signal <last_vga_h_blanking>.
+    Found 1-bit register for signal <fft_start>.
+    Found 1-bit register for signal <fft_unload>.
+    Found 1-bit register for signal <decimate_we>.
+    Found 8-bit register for signal <decimate_in>.
+    Found 1-bit register for signal <vga_ram_en>.
+    Found 9-bit register for signal <vga_ram_addr>.
+    Found 8-bit adder for signal <adc_in[7]_adc_offset[7]_add_1_OUT> created at line 389.
+    Found 32-bit adder for signal <clock_counter_value[31]_GND_6_o_add_2_OUT> created at line 390.
+    Found 8-bit adder for signal <sine_buffer[7]_PWR_6_o_add_538_OUT> created at line 1241.
+    Found 9-bit subtractor for signal <vga_x_pos[31]_GND_6_o_sub_13_OUT<8:0>> created at line 432.
+    Found 8-bit subtractor for signal <GND_6_o_GND_6_o_sub_14_OUT<7:0>> created at line 1314.
+    Found 32-bit subtractor for signal <GND_6_o_GND_6_o_sub_542_OUT<31:0>> created at line 1308.
+    Found 32-bit comparator greater for signal <n0006> created at line 392
+    Found 32-bit comparator greater for signal <vga_x_pos[31]_PWR_6_o_LessThan_9_o> created at line 425
+    Found 32-bit comparator greater for signal <vga_y_pos[31]_PWR_6_o_LessThan_10_o> created at line 425
+    Found 32-bit comparator greater for signal <GND_6_o_vga_x_pos[31]_LessThan_11_o> created at line 425
+    Found 32-bit comparator greater for signal <GND_6_o_vga_y_pos[31]_LessThan_12_o> created at line 425
+    Found 8-bit comparator lessequal for signal <n0027> created at line 445
+    Summary:
+	inferred   6 Adder/Subtractor(s).
+	inferred 185 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+	inferred   6 Multiplexer(s).
+Unit <master_instructor> synthesized.
+
+Synthesizing Unit <averaging>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/averaging.vhd".
+    Found 1-bit register for signal <ram_wea>.
+    Found 1-bit register for signal <dv_buffered>.
+    Found 9-bit register for signal <mag_idx_buffered>.
+    Found 8-bit register for signal <mag_in_buffered>.
+    Found 9-bit register for signal <avg_idx>.
+    Found 8-bit register for signal <avg_out>.
+    Found 1-bit register for signal <avg_valid>.
+    Found 9-bit register for signal <ram_addra>.
+    Found 8-bit register for signal <ram_dina>.
+    Found 16-bit adder for signal <n0033> created at line 53.
+    Found 8-bit subtractor for signal <GND_7_o_GND_7_o_sub_2_OUT<7:0>> created at line 1314.
+    Found 8x8-bit multiplier for signal <n0041> created at line 53.
+    Found 8x8-bit multiplier for signal <n0042> created at line 53.
+    Summary:
+	inferred   2 Multiplier(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  54 D-type flip-flop(s).
+Unit <averaging> synthesized.
+
+Synthesizing Unit <mag>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/mag.vhd".
+    Found 9-bit register for signal <idx_buffer_array<1>>.
+    Found 9-bit register for signal <idx_buffer_array<2>>.
+    Found 9-bit register for signal <idx_buffer_array<3>>.
+    Found 9-bit register for signal <idx_buffer_array<4>>.
+    Found 9-bit register for signal <idx_buffer_array<5>>.
+    Found 9-bit register for signal <idx_buffer_array<6>>.
+    Found 9-bit register for signal <idx_buffer_array<7>>.
+    Found 9-bit register for signal <idx_buffer_array<8>>.
+    Found 9-bit register for signal <idx_buffer_array<9>>.
+    Found 9-bit register for signal <next_idx_out>.
+    Found 9-bit register for signal <idx_buffer_array<0>>.
+    Found 16-bit register for signal <re_squared>.
+    Found 16-bit register for signal <im_squared>.
+    Found 16-bit register for signal <parts_summed>.
+    Found 8-bit register for signal <re_buffer>.
+    Found 8-bit register for signal <im_buffer>.
+    Found 10-bit register for signal <valid_array>.
+    Found 1-bit register for signal <output_valid>.
+    Found 16-bit register for signal <sqrt_in>.
+    Found 16-bit register for signal <sqrt_delay<0>>.
+    Found 8-bit register for signal <mag>.
+    Found 9-bit register for signal <idx_out>.
+    Found 16-bit adder for signal <re_squared[15]_im_squared[15]_add_2_OUT> created at line 73.
+    Found 8x8-bit multiplier for signal <re_buffer[7]_re_buffer[7]_MuLt_0_OUT> created at line 70.
+    Found 8x8-bit multiplier for signal <im_buffer[7]_im_buffer[7]_MuLt_1_OUT> created at line 71.
+    Summary:
+	inferred   2 Multiplier(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred 223 D-type flip-flop(s).
+Unit <mag> synthesized.
+
+Synthesizing Unit <vga_configurable>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/vga_configurable.vhd".
+        config = (96,16,48,640,'0',2,10,33,480,'0')
+        red_width = 3
+        green_width = 3
+        blue_width = 2
+    Found 10-bit register for signal <v_counter>.
+    Found 10-bit register for signal <h_counter>.
+    Found 1-bit register for signal <hs>.
+    Found 1-bit register for signal <h_blanking>.
+    Found 1-bit register for signal <vs>.
+    Found 1-bit register for signal <v_blanking>.
+    Found 1-bit register for signal <color_valid>.
+    Found 11-bit register for signal <x_pos>.
+    Found 10-bit register for signal <y_pos>.
+    Found 11-bit subtractor for signal <GND_23_o_GND_23_o_sub_12_OUT> created at line 95.
+    Found 10-bit adder for signal <v_counter[9]_GND_23_o_add_17_OUT> created at line 112.
+    Found 10-bit adder for signal <h_counter[9]_GND_23_o_add_19_OUT> created at line 119.
+    Found 10-bit subtractor for signal <GND_23_o_GND_23_o_sub_13_OUT<9:0>> created at line 95.
+    Found 11-bit subtractor for signal <GND_23_o_GND_23_o_sub_11_OUT<10:0>> created at line 94.
+    Found 10-bit comparator greater for signal <h_counter[9]_GND_23_o_LessThan_4_o> created at line 68
+    Found 10-bit comparator greater for signal <v_counter[9]_GND_23_o_LessThan_5_o> created at line 77
+    Found 10-bit comparator greater for signal <GND_23_o_h_counter[9]_LessThan_6_o> created at line 86
+    Found 10-bit comparator greater for signal <h_counter[9]_PWR_17_o_LessThan_7_o> created at line 87
+    Found 10-bit comparator greater for signal <GND_23_o_v_counter[9]_LessThan_8_o> created at line 88
+    Found 10-bit comparator greater for signal <v_counter[9]_PWR_17_o_LessThan_9_o> created at line 89
+    Summary:
+	inferred   5 Adder/Subtractor(s).
+	inferred  46 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+	inferred   5 Multiplexer(s).
+Unit <vga_configurable> synthesized.
+
+Synthesizing Unit <uart_comms>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/uart_comms.vhd".
+        clk_rate = 100000000
+        baud_rate = 500000
+INFO:Xst:3210 - "/home/main/git/FPGA_Night_Final_Project/uart_comms.vhd" line 115: Output port <full> of the instance <Inst_serial_rx_fifo> is unconnected or connected to loadless signal.
+    Found 2-bit register for signal <frame_state>.
+    Found 2-bit register for signal <reading_state>.
+    Found 5-bit register for signal <current_frame_pos>.
+    Found 8-bit register for signal <current_frame<0>>.
+    Found 8-bit register for signal <current_frame<1>>.
+    Found 8-bit register for signal <current_frame<2>>.
+    Found 8-bit register for signal <current_frame<3>>.
+    Found 8-bit register for signal <current_frame<4>>.
+    Found 8-bit register for signal <current_frame<5>>.
+    Found 8-bit register for signal <current_frame<6>>.
+    Found 8-bit register for signal <current_frame<7>>.
+    Found 8-bit register for signal <current_frame<8>>.
+    Found 8-bit register for signal <current_frame<9>>.
+    Found 8-bit register for signal <current_frame<10>>.
+    Found 8-bit register for signal <current_frame<11>>.
+    Found 8-bit register for signal <current_frame<12>>.
+    Found 8-bit register for signal <current_frame<13>>.
+    Found 8-bit register for signal <current_frame<14>>.
+    Found 8-bit register for signal <current_frame<15>>.
+    Found 8-bit register for signal <current_frame<16>>.
+    Found 8-bit register for signal <current_frame<17>>.
+    Found 8-bit register for signal <current_frame<18>>.
+    Found 8-bit register for signal <current_frame<19>>.
+    Found 8-bit register for signal <current_frame<20>>.
+    Found 8-bit register for signal <current_frame<21>>.
+    Found 8-bit register for signal <current_frame<22>>.
+    Found 8-bit register for signal <current_frame<23>>.
+    Found 8-bit register for signal <current_frame<24>>.
+    Found 8-bit register for signal <current_frame<25>>.
+    Found 8-bit register for signal <current_frame<26>>.
+    Found 8-bit register for signal <current_frame<27>>.
+    Found 8-bit register for signal <current_frame<28>>.
+    Found 8-bit register for signal <current_frame<29>>.
+    Found 8-bit register for signal <current_frame<30>>.
+    Found 8-bit register for signal <current_frame<31>>.
+    Found 8-bit register for signal <current_frame_checksum>.
+    Found 8-bit register for signal <frame<0>>.
+    Found 8-bit register for signal <frame<1>>.
+    Found 8-bit register for signal <frame<2>>.
+    Found 8-bit register for signal <frame<3>>.
+    Found 8-bit register for signal <frame<4>>.
+    Found 8-bit register for signal <frame<5>>.
+    Found 8-bit register for signal <frame<6>>.
+    Found 8-bit register for signal <frame<7>>.
+    Found 8-bit register for signal <frame<8>>.
+    Found 8-bit register for signal <frame<9>>.
+    Found 8-bit register for signal <frame<10>>.
+    Found 8-bit register for signal <frame<11>>.
+    Found 8-bit register for signal <frame<12>>.
+    Found 8-bit register for signal <frame<13>>.
+    Found 8-bit register for signal <frame<14>>.
+    Found 8-bit register for signal <frame<15>>.
+    Found 8-bit register for signal <frame<16>>.
+    Found 8-bit register for signal <frame<17>>.
+    Found 8-bit register for signal <frame<18>>.
+    Found 8-bit register for signal <frame<19>>.
+    Found 8-bit register for signal <frame<20>>.
+    Found 8-bit register for signal <frame<21>>.
+    Found 8-bit register for signal <frame<22>>.
+    Found 8-bit register for signal <frame<23>>.
+    Found 8-bit register for signal <frame<24>>.
+    Found 8-bit register for signal <frame<25>>.
+    Found 8-bit register for signal <frame<26>>.
+    Found 8-bit register for signal <frame<27>>.
+    Found 8-bit register for signal <frame<28>>.
+    Found 8-bit register for signal <frame<29>>.
+    Found 8-bit register for signal <frame<30>>.
+    Found 8-bit register for signal <frame<31>>.
+    Found 1-bit register for signal <rx_rd_en>.
+    Found 1-bit register for signal <frame_valid>.
+    Found finite state machine <FSM_0> for signal <frame_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | preamble                                       |
+    | Power Up State     | preamble                                       |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <reading_state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | wait_for_data                                  |
+    | Power Up State     | wait_for_data                                  |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit adder for signal <current_frame_pos[4]_GND_25_o_add_1_OUT> created at line 77.
+    Found 8-bit adder for signal <current_frame[2][7]_GND_25_o_add_45_OUT> created at line 1241.
+    Found 5-bit 4-to-1 multiplexer for signal <frame_state[1]_GND_25_o_wide_mux_81_OUT> created at line 80.
+    Found 8-bit comparator greater for signal <GND_25_o_rx_data[7]_LessThan_41_o> created at line 90
+    Found 8-bit comparator equal for signal <current_frame[2][7]_GND_25_o_equal_47_o> created at line 99
+    Found 8-bit comparator equal for signal <current_frame_checksum[7]_rx_data[7]_equal_49_o> created at line 106
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred 527 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred   6 Multiplexer(s).
+	inferred   2 Finite State Machine(s).
+Unit <uart_comms> synthesized.
+
+Synthesizing Unit <serial_rx_fifo>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/serial_rx_fifo.vhd".
+        clk_rate = 100000000
+        baud_rate = 500000
+    Found 8-bit register for signal <din>.
+    Found 8-bit register for signal <rx_data_buffer>.
+    Found 2-bit register for signal <rx_state>.
+    Found 32-bit register for signal <rx_counter>.
+    Found 3-bit register for signal <rx_bit_pos>.
+    Found 1-bit register for signal <wr_en>.
+    Found 1-bit register for signal <rx_buffer_n>.
+    Found finite state machine <FSM_2> for signal <rx_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 32-bit adder for signal <rx_counter[31]_GND_26_o_add_0_OUT> created at line 1241.
+    Found 3-bit adder for signal <rx_bit_pos[2]_GND_26_o_add_12_OUT> created at line 1241.
+    Found 32-bit 4-to-1 multiplexer for signal <rx_state[1]_rx_counter[31]_wide_mux_29_OUT> created at line 68.
+    Found 32-bit comparator greater for signal <rx_counter[31]_GND_26_o_LessThan_26_o> created at line 101
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  53 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred  15 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <serial_rx_fifo> synthesized.
+
+Synthesizing Unit <dcm>.
+    Related source file is "/home/main/git/FPGA_Night_Final_Project/ipcore_dir/dcm.vhd".
+    Summary:
+	no macro.
+Unit <dcm> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 4
+ 8x8-bit multiplier                                    : 4
+# Adders/Subtractors                                   : 18
+ 10-bit adder                                          : 2
+ 10-bit subtractor                                     : 1
+ 11-bit subtractor                                     : 2
+ 16-bit adder                                          : 2
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 2
+ 32-bit subtractor                                     : 1
+ 5-bit adder                                           : 1
+ 8-bit adder                                           : 3
+ 8-bit subtractor                                      : 2
+ 9-bit subtractor                                      : 1
+# Registers                                            : 134
+ 1-bit register                                        : 21
+ 10-bit register                                       : 4
+ 11-bit register                                       : 1
+ 16-bit register                                       : 6
+ 18-bit register                                       : 1
+ 2-bit register                                        : 1
+ 3-bit register                                        : 1
+ 32-bit register                                       : 4
+ 4-bit register                                        : 1
+ 5-bit register                                        : 1
+ 8-bit register                                        : 77
+ 9-bit register                                        : 16
+# Comparators                                          : 16
+ 10-bit comparator greater                             : 6
+ 32-bit comparator greater                             : 6
+ 8-bit comparator equal                                : 2
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 32
+ 1-bit 2-to-1 multiplexer                              : 11
+ 10-bit 2-to-1 multiplexer                             : 2
+ 2-bit 2-to-1 multiplexer                              : 3
+ 3-bit 2-to-1 multiplexer                              : 3
+ 32-bit 2-to-1 multiplexer                             : 7
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 2
+ 5-bit 4-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 3
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Reading core <ipcore_dir/decimate.ngc>.
+Reading core <ipcore_dir/fft.ngc>.
+Reading Secure Unit <blk00000118>.
+Reading core <ipcore_dir/sine_gen.ngc>.
+Reading core <ipcore_dir/vga_ram.ngc>.
+Reading core <ipcore_dir/avg_ram.ngc>.
+Reading core <ipcore_dir/mag_sqrt.ngc>.
+Reading Secure Unit <blk00000032>.
+Reading core <ipcore_dir/fifo.ngc>.
+Loading core <decimate> for timing and area information for instance <decimate_inst>.
+Loading core <fft> for timing and area information for instance <fft_inst>.
+Loading core <sine_gen> for timing and area information for instance <sine_gen_inst>.
+Loading core <vga_ram> for timing and area information for instance <vga_ram_inst>.
+Loading core <avg_ram> for timing and area information for instance <avg_ram_inst>.
+Loading core <mag_sqrt> for timing and area information for instance <your_instance_name>.
+Loading core <fifo> for timing and area information for instance <fifo_inst>.
+INFO:Xst:2261 - The FF/Latch <avg_out_2> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_2> 
+INFO:Xst:2261 - The FF/Latch <avg_out_3> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_3> 
+INFO:Xst:2261 - The FF/Latch <avg_out_4> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_4> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_0> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_0> 
+INFO:Xst:2261 - The FF/Latch <avg_out_5> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_5> 
+INFO:Xst:2261 - The FF/Latch <avg_out_0> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_0> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_1> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_1> 
+INFO:Xst:2261 - The FF/Latch <avg_out_6> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_6> 
+INFO:Xst:2261 - The FF/Latch <avg_out_1> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_1> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_2> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_2> 
+INFO:Xst:2261 - The FF/Latch <avg_out_7> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_7> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_3> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_3> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_4> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_4> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_5> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_5> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_6> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_6> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_7> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_7> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_8> in Unit <Inst_averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_8> 
+WARNING:Xst:1293 - FF/Latch <fft_scale_0> has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <fft_scale_1> has a constant value of 1 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <max_clock_counter_value_31> has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <averaging>.
+	Multiplier <Mmult_n0041> in block <averaging> and adder/subtractor <Madd_n0033> in block <averaging> are combined into a MAC<Maddsub_n0041>.
+Unit <averaging> synthesized (advanced).
+
+Synthesizing (advanced) Unit <master_instructor>.
+The following registers are absorbed into counter <clock_counter_value>: 1 register on signal <clock_counter_value>.
+Unit <master_instructor> synthesized (advanced).
+
+Synthesizing (advanced) Unit <serial_rx_fifo>.
+The following registers are absorbed into counter <rx_bit_pos>: 1 register on signal <rx_bit_pos>.
+Unit <serial_rx_fifo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <vga_configurable>.
+The following registers are absorbed into counter <h_counter>: 1 register on signal <h_counter>.
+The following registers are absorbed into counter <v_counter>: 1 register on signal <v_counter>.
+Unit <vga_configurable> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# MACs                                                 : 1
+ 8x8-to-16-bit MAC                                     : 1
+# Multipliers                                          : 3
+ 8x8-bit multiplier                                    : 3
+# Adders/Subtractors                                   : 13
+ 10-bit subtractor                                     : 2
+ 11-bit subtractor                                     : 1
+ 16-bit adder                                          : 1
+ 32-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+ 5-bit adder                                           : 1
+ 8-bit adder                                           : 3
+ 8-bit subtractor                                      : 2
+ 9-bit subtractor                                      : 1
+# Counters                                             : 4
+ 10-bit up counter                                     : 2
+ 3-bit up counter                                      : 1
+ 32-bit up counter                                     : 1
+# Registers                                            : 1033
+ Flip-Flops                                            : 1033
+# Comparators                                          : 16
+ 10-bit comparator greater                             : 6
+ 32-bit comparator greater                             : 6
+ 8-bit comparator equal                                : 2
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 28
+ 1-bit 2-to-1 multiplexer                              : 11
+ 2-bit 2-to-1 multiplexer                              : 3
+ 3-bit 2-to-1 multiplexer                              : 2
+ 32-bit 2-to-1 multiplexer                             : 6
+ 32-bit 4-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 2
+ 5-bit 4-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 3
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <fft_scale_0> has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <fft_scale_1> has a constant value of 1 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <max_clock_counter_value_31> has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <avg_out_2> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_2> 
+INFO:Xst:2261 - The FF/Latch <avg_out_3> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_3> 
+INFO:Xst:2261 - The FF/Latch <avg_out_4> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_4> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_0> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_0> 
+INFO:Xst:2261 - The FF/Latch <avg_out_5> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_5> 
+INFO:Xst:2261 - The FF/Latch <avg_out_0> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_0> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_1> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_1> 
+INFO:Xst:2261 - The FF/Latch <avg_out_6> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_6> 
+INFO:Xst:2261 - The FF/Latch <avg_out_1> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_1> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_2> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_2> 
+INFO:Xst:2261 - The FF/Latch <avg_out_7> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_dina_7> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_3> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_3> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_4> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_4> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_5> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_5> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_6> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_6> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_7> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_7> 
+INFO:Xst:2261 - The FF/Latch <avg_idx_8> in Unit <averaging> is equivalent to the following FF/Latch, which will be removed : <ram_addra_8> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_0> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_0> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_1> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_1> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_2> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_2> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_3> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_3> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_4> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_4> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_5> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_5> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_6> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_6> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_7> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_7> 
+INFO:Xst:2261 - The FF/Latch <idx_buffer_array_9_8> in Unit <mag> is equivalent to the following FF/Latch, which will be removed : <next_idx_out_8> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_uart_comms/FSM_1> on signal <reading_state[1:2]> with user encoding.
+---------------------------
+ State         | Encoding
+---------------------------
+ wait_for_data | 00
+ stall         | 01
+ data_valid    | 10
+---------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_uart_comms/FSM_0> on signal <frame_state[1:2]> with user encoding.
+----------------------
+ State    | Encoding
+----------------------
+ preamble | 00
+ length   | 01
+ payload  | 10
+ fcs      | 11
+----------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_uart_comms/Inst_serial_rx_fifo/FSM_2> on signal <rx_state[1:2]> with gray encoding.
+-------------------------
+ State       | Encoding
+-------------------------
+ idle        | 00
+ start_bit   | 01
+ handle_data | 11
+ stop_bit    | 10
+-------------------------
+INFO:Xst:2261 - The FF/Latch <vga_blue_in_0> in Unit <master_instructor> is equivalent to the following FF/Latch, which will be removed : <vga_blue_in_1> 
+
+Optimizing unit <master_instructor> ...
+
+Optimizing unit <averaging> ...
+
+Optimizing unit <mag> ...
+
+Optimizing unit <vga_configurable> ...
+
+Optimizing unit <uart_comms> ...
+
+Optimizing unit <serial_rx_fifo> ...
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_31_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_30_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_29_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_28_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_26_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_25_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_27_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_24_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_23_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_21_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_20_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_22_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_19_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_18_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_16_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_15_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_17_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_14_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_13_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_11_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_10_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_12_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_8_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_9_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_2_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_0_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/frame_1_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_31_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_30_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_28_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_27_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_29_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_26_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_25_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_23_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_22_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_24_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_20_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_19_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_21_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_17_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_16_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_18_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_15_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_14_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_12_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_11_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_13_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_10_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_9_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_8_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_1_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_7> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_6> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_5> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_4> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_3> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_2> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_1> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:2677 - Node <Inst_uart_comms/current_frame_0_0> of sequential type is unconnected in block <master_instructor>.
+WARNING:Xst:1710 - FF/Latch <decimate_countdown_31> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_30> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_29> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_28> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_27> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_26> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_25> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_24> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_23> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_22> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_21> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_20> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_19> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_18> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_17> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_16> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_15> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_14> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_13> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_12> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_11> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_10> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_9> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_8> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <decimate_countdown_7> (without init value) has a constant value of 0 in block <master_instructor>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <vga_inst/y_pos_9> in Unit <master_instructor> is equivalent to the following FF/Latch, which will be removed : <vga_inst/x_pos_10> 
+INFO:Xst:2261 - The FF/Latch <Inst_uart_comms/reading_state_FSM_FFd2> in Unit <master_instructor> is equivalent to the following FF/Latch, which will be removed : <Inst_uart_comms/rx_rd_en> 
+INFO:Xst:3203 - The FF/Latch <vga_inst/y_pos_9> in Unit <master_instructor> is the opposite to the following FF/Latch, which will be removed : <vga_inst/color_valid> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block master_instructor, actual ratio is 16.
+INFO:Xst:2260 - The FF/Latch <blk0000001d> in Unit <blk00000003> is equivalent to the following 3 FFs/Latches : <blk000000f5> <blk0000010a> <blk0000010b> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_1> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_2> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <blk0000001d> in Unit <blk00000003> is equivalent to the following 3 FFs/Latches : <blk000000f5> <blk0000010a> <blk0000010b> 
+INFO:Xst:2260 - The FF/Latch <blk0000001d> in Unit <blk00000003> is equivalent to the following 3 FFs/Latches : <blk000000f5> <blk0000010a> <blk0000010b> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_1> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_2> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <Inst_uart_comms/Inst_serial_rx_fifo/fifo_inst> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
+
+Final Macro Processing ...
+
+Processing Unit <master_instructor> :
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_8>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_7>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_6>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_5>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_4>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_3>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_2>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_1>.
+	Found 2-bit shift register for signal <Inst_averaging/avg_idx_0>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_8>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_7>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_6>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_5>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_4>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_3>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_2>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_1>.
+	Found 10-bit shift register for signal <mag_inst/idx_buffer_array_9_0>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_15>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_14>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_13>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_12>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_11>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_10>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_9>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_8>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_7>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_6>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_5>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_4>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_3>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_2>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_1>.
+	Found 2-bit shift register for signal <mag_inst/sqrt_in_0>.
+	Found 11-bit shift register for signal <mag_inst/output_valid>.
+Unit <master_instructor> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 445
+ Flip-Flops                                            : 445
+# Shift Registers                                      : 35
+ 10-bit shift register                                 : 9
+ 11-bit shift register                                 : 1
+ 2-bit shift register                                  : 25
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : master_instructor.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1619
+#      GND                         : 31
+#      INV                         : 60
+#      LUT1                        : 56
+#      LUT2                        : 167
+#      LUT3                        : 237
+#      LUT4                        : 132
+#      LUT5                        : 104
+#      LUT6                        : 198
+#      MUXCY                       : 299
+#      MUXF7                       : 21
+#      MUXF8                       : 9
+#      VCC                         : 26
+#      XORCY                       : 279
+# FlipFlops/Latches                : 1428
+#      FD                          : 94
+#      FDC                         : 211
+#      FDCE                        : 243
+#      FDE                         : 363
+#      FDP                         : 16
+#      FDPE                        : 24
+#      FDR                         : 89
+#      FDRE                        : 352
+#      FDS                         : 2
+#      FDSE                        : 34
+# RAMS                             : 6
+#      RAMB8BWER                   : 6
+# Shift Registers                  : 175
+#      SRL16E                      : 68
+#      SRLC16E                     : 107
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 38
+#      IBUF                        : 10
+#      IBUFG                       : 1
+#      OBUF                        : 27
+# DCMs                             : 1
+#      DCM_SP                      : 1
+# DSPs                             : 14
+#      DSP48A1                     : 14
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1420  out of  18224     7%  
+ Number of Slice LUTs:                 1129  out of   9112    12%  
+    Number used as Logic:               954  out of   9112    10%  
+    Number used as Memory:              175  out of   2176     8%  
+       Number used as SRL:              175
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1889
+   Number with an unused Flip Flop:     469  out of   1889    24%  
+   Number with an unused LUT:           760  out of   1889    40%  
+   Number of fully used LUT-FF pairs:   660  out of   1889    34%  
+   Number of unique control sets:        86
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  38  out of    232    16%  
+    IOB Flip Flops/Latches:               8
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                3  out of     32     9%  
+    Number using Block RAM only:          3
+ Number of BUFG/BUFGCTRLs:                4  out of     16    25%  
+ Number of DSP48A1s:                     14  out of     32    43%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | DCM_SP:CLKFX           | 56    |
+clk                                | DCM_SP:CLK0            | 365   |
+clk                                | DCM_SP:CLKDV           | 309   |
+real_fft_clk                       | BUFG                   | 891   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 8.303ns (Maximum Frequency: 120.441MHz)
+   Minimum input arrival time before clock: 5.752ns
+   Maximum output required time after clock: 4.625ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 6.527ns (frequency: 153.214MHz)
+  Total number of paths / destination ports: 80638 / 2237
+-------------------------------------------------------------------------
+Delay:               6.527ns (Levels of Logic = 5)
+  Source:            Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_3 (FF)
+  Destination:       Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_31 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_3 to Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              5   0.447   1.059  Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_3 (Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_3)
+     LUT6:I1->O            1   0.203   0.924  Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_11_o<31>11 (Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_11_o<31>11)
+     LUT5:I0->O            3   0.203   0.651  Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_11_o<31>16 (Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_11_o<31>1)
+     LUT5:I4->O            4   0.205   0.931  Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_9_o<31>1 (Inst_uart_comms/Inst_serial_rx_fifo/rx_counter[31]_GND_26_o_equal_9_o)
+     LUT5:I1->O           32   0.203   1.396  Inst_uart_comms/Inst_serial_rx_fifo/Mmux_rx_state[1]_rx_counter[31]_wide_mux_29_OUT1101 (Inst_uart_comms/Inst_serial_rx_fifo/Mmux_rx_state[1]_rx_counter[31]_wide_mux_29_OUT110)
+     LUT6:I4->O            1   0.203   0.000  Inst_uart_comms/Inst_serial_rx_fifo/Mmux_rx_state[1]_rx_counter[31]_wide_mux_29_OUT110 (Inst_uart_comms/Inst_serial_rx_fifo/rx_state[1]_rx_counter[31]_wide_mux_29_OUT<0>)
+     FDC:D                     0.102          Inst_uart_comms/Inst_serial_rx_fifo/rx_counter_0
+    ----------------------------------------
+    Total                      6.527ns (1.566ns logic, 4.961ns route)
+                                       (24.0% logic, 76.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'real_fft_clk'
+  Clock period: 8.303ns (frequency: 120.441MHz)
+  Total number of paths / destination ports: 13474 / 1248
+-------------------------------------------------------------------------
+Delay:               8.303ns (Levels of Logic = 2)
+  Source:            Inst_averaging/avg_ram_inst/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM9.ram (RAM)
+  Destination:       Inst_averaging/Maddsub_n0041 (DSP)
+  Source Clock:      real_fft_clk rising
+  Destination Clock: real_fft_clk rising
+
+  Data Path: Inst_averaging/avg_ram_inst/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM9.ram to Inst_averaging/Maddsub_n0041
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB8BWER:CLKBRDCLK->DOBDO11    1   1.850   0.579  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM9.ram (doutb<7>)
+     end scope: 'Inst_averaging/avg_ram_inst:doutb<7>'
+     DSP48A1:A7->PCOUT47    1   4.469   0.000  Inst_averaging/Mmult_n0042 (Inst_averaging/Mmult_n0042_PCOUT_to_Maddsub_n0041_PCIN_47)
+     DSP48A1:PCIN47            1.405          Inst_averaging/Maddsub_n0041
+    ----------------------------------------
+    Total                      8.303ns (7.724ns logic, 0.579ns route)
+                                       (93.0% logic, 7.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 504 / 448
+-------------------------------------------------------------------------
+Offset:              5.752ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       decimate_in_0 (FF)
+  Destination Clock: clk rising 0.5X
+
+  Data Path: rst to decimate_in_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           628   1.222   2.117  rst_IBUF (rst_IBUF)
+     INV:I->O            103   0.206   1.885  rst_inv1_INV_0 (Inst_averaging/rst_inv)
+     FDE:CE                    0.322          decimate_in_0
+    ----------------------------------------
+    Total                      5.752ns (1.750ns logic, 4.002ns route)
+                                       (30.4% logic, 69.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'real_fft_clk'
+  Total number of paths / destination ports: 338 / 331
+-------------------------------------------------------------------------
+Offset:              5.752ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       Inst_averaging/avg_valid (FF)
+  Destination Clock: real_fft_clk rising
+
+  Data Path: rst to Inst_averaging/avg_valid
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           628   1.222   2.117  rst_IBUF (rst_IBUF)
+     INV:I->O            103   0.206   1.885  rst_inv1_INV_0 (Inst_averaging/rst_inv)
+     FDE:CE                    0.322          Inst_averaging/avg_valid
+    ----------------------------------------
+    Total                      5.752ns (1.750ns logic, 4.002ns route)
+                                       (30.4% logic, 69.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'real_fft_clk'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            sine_out_7 (FF)
+  Destination:       sine_out<7> (PAD)
+  Source Clock:      real_fft_clk rising
+
+  Data Path: sine_out_7 to sine_out<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              1   0.447   0.579  sine_out_7 (sine_out_7)
+     OBUF:I->O                 2.571          sine_out_7_OBUF (sine_out<7>)
+    ----------------------------------------
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 10 / 8
+-------------------------------------------------------------------------
+Offset:              4.625ns (Levels of Logic = 2)
+  Source:            vga_inst/y_pos_9 (FF)
+  Destination:       vga_blue<1> (PAD)
+  Source Clock:      clk rising 0.2X
+
+  Data Path: vga_inst/y_pos_9 to vga_blue<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDSE:C->Q             4   0.447   0.788  vga_inst/y_pos_9 (vga_inst/y_pos_9)
+     LUT2:I0->O            2   0.203   0.616  vga_inst/Mmux_blue11 (vga_blue_0_OBUF)
+     OBUF:I->O                 2.571          vga_blue_0_OBUF (vga_blue<0>)
+    ----------------------------------------
+    Total                      4.625ns (3.221ns logic, 1.404ns route)
+                                       (69.6% logic, 30.4% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    6.527|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock real_fft_clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    7.653|         |         |         |
+real_fft_clk   |    8.303|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 17.68 secs
+ 
+--> 
+
+
+Total memory usage is 520332 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  458 (   0 filtered)
+Number of infos    :   92 (   0 filtered)
+

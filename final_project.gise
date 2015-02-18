@@ -22,10 +22,185 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="final_project.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="master_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="master_instructor.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="master_instructor.bit" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="master_instructor.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="master_instructor.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="master_instructor.drc" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="master_instructor.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="master_instructor.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="master_instructor.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="master_instructor.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="master_instructor.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="master_instructor.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="master_instructor.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="master_instructor.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="master_instructor.prj"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="master_instructor.ptwx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="master_instructor.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="master_instructor.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="master_instructor.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="master_instructor.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="master_instructor.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="master_instructor.ut" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="master_instructor.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="master_instructor.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="master_instructor_envsettings.html"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="master_instructor_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="master_instructor_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="master_instructor_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="master_instructor_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="master_instructor_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="master_instructor_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="master_instructor_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="master_instructor_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="master_instructor_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="master_instructor_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="master_instructor_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="master_instructor_summary.xml"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="master_instructor_usage.xml"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="master_instructor_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1423009026" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009026" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-2668369112708095543" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009026" xil_pn:in_ck="-654351606656604532" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-2438019052019832264" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/avg_ram.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/avg_ram.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/dcm.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/decimate.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/decimate.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/fft.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/fft.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/fifo.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/fifo.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/mag_sqrt.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/mag_sqrt.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/sine_gen.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/sine_gen.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/vga_ram.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/vga_ram.vhd"/>
+    </transform>
+    <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009026" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="8628888418423042443" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009026" xil_pn:in_ck="-3352890716752721084" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="1106364426758808884" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009026" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-6160700501838967806" xil_pn:start_ts="1423009026">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009974" xil_pn:in_ck="2214579468898854211" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="8778763302426171473" xil_pn:start_ts="1423009953">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.lso"/>
+      <outfile xil_pn:name="master_instructor.ngc"/>
+      <outfile xil_pn:name="master_instructor.ngr"/>
+      <outfile xil_pn:name="master_instructor.prj"/>
+      <outfile xil_pn:name="master_instructor.stx"/>
+      <outfile xil_pn:name="master_instructor.syr"/>
+      <outfile xil_pn:name="master_instructor.xst"/>
+      <outfile xil_pn:name="master_instructor_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009053" xil_pn:in_ck="6668997175502683847" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="4433089302551276384" xil_pn:start_ts="1423009053">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1423009982" xil_pn:in_ck="-7652025234526078983" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-1767902033382830813" xil_pn:start_ts="1423009974">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.bld"/>
+      <outfile xil_pn:name="master_instructor.ngd"/>
+      <outfile xil_pn:name="master_instructor_ngdbuild.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1423010001" xil_pn:in_ck="-5940858565500799577" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="1463976855095865663" xil_pn:start_ts="1423009982">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.pcf"/>
+      <outfile xil_pn:name="master_instructor_map.map"/>
+      <outfile xil_pn:name="master_instructor_map.mrp"/>
+      <outfile xil_pn:name="master_instructor_map.ncd"/>
+      <outfile xil_pn:name="master_instructor_map.ngm"/>
+      <outfile xil_pn:name="master_instructor_map.xrpt"/>
+      <outfile xil_pn:name="master_instructor_summary.xml"/>
+      <outfile xil_pn:name="master_instructor_usage.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1423010025" xil_pn:in_ck="-5520039224183472064" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-1178055513630676559" xil_pn:start_ts="1423010001">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.ncd"/>
+      <outfile xil_pn:name="master_instructor.pad"/>
+      <outfile xil_pn:name="master_instructor.par"/>
+      <outfile xil_pn:name="master_instructor.ptwx"/>
+      <outfile xil_pn:name="master_instructor.unroutes"/>
+      <outfile xil_pn:name="master_instructor.xpi"/>
+      <outfile xil_pn:name="master_instructor_pad.csv"/>
+      <outfile xil_pn:name="master_instructor_pad.txt"/>
+      <outfile xil_pn:name="master_instructor_par.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1423010046" xil_pn:in_ck="1539707311225566187" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="396117104113915555" xil_pn:start_ts="1423010025">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.bgn"/>
+      <outfile xil_pn:name="master_instructor.bit"/>
+      <outfile xil_pn:name="master_instructor.drc"/>
+      <outfile xil_pn:name="master_instructor.ut"/>
+      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1423010025" xil_pn:in_ck="-5940858565500799709" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1423010018">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
+      <outfile xil_pn:name="master_instructor.twr"/>
+      <outfile xil_pn:name="master_instructor.twx"/>
+    </transform>
+  </transforms>
 
 </generated_project>
