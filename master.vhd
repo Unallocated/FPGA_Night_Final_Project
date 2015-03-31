@@ -163,7 +163,7 @@ begin
 				vga_ram_class_addrb <= 
 					std_logic_vector(to_unsigned(vga_x_pos, vga_ram_class_addrb'length));
 				
-				if(unsigned(vga_ram_class_doutb) = vga_y_pos) then
+				if(255 - unsigned(vga_ram_class_doutb) <= vga_y_pos) then
 					vga_blue_in <= (others => '1');
 				else
 					vga_blue_in <= (others => '0');
@@ -195,7 +195,7 @@ begin
 			
 			if(fft_rfd = '0' and fft_start = '0' and fft_busy = '0' 
 				and fft_done = '0' and fft_dv = '0' and fft_unload = '0'
-				and vga_v_blanking = '0') then
+				and vga_v_blanking = '0' and fft_waiting_to_write = '0') then
 					
 					fft_start <= '1';
 			end if;
@@ -245,7 +245,7 @@ begin
 	fft_class_inst : fft_class
 	  PORT MAP (
 		 clk => fft_clk,
-		 ce => fft_ce,
+		 ce => '1',
 		 sclr => rst,
 		 start => fft_start,
 		 unload => fft_unload,
@@ -253,7 +253,7 @@ begin
 		 xn_im => (others => '0'),
 		 fwd_inv => '1',
 		 fwd_inv_we => '1',
-		 scale_sch => fft_scale_sch,
+		 scale_sch => "010101010101010101",
 		 scale_sch_we => '1',
 		 rfd => fft_rfd,
 		 xn_index => open,
