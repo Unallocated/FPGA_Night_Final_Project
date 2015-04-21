@@ -143,12 +143,51 @@ architecture Behavioral of master is
 		 sine : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 	  );
 	END COMPONENT;
+	
+	signal avg_avg : std_logic_vector(7 downto 0);
+	signal avg_idx : std_logic_vector(8 downto 0);
+	signal avg_dv : std_logic;
+	signal weight_in : std_logic_vector(7 downto 0);
+	COMPONENT avg
+	PORT(
+		rst : IN std_logic;
+		clk : IN std_logic;
+		a : IN std_logic_vector(7 downto 0);
+		mag_mag : IN std_logic_vector(7 downto 0);
+		mag_idx : IN std_logic_vector(8 downto 0);
+		mag_dv : IN std_logic;          
+		avg : OUT std_logic_vector(7 downto 0);
+		idx : OUT std_logic_vector(8 downto 0);
+		dv : OUT std_logic
+		);
+	END COMPONENT;
 
+	signal adc_offset : std_logic_vector(adc_in'range);
+	--signal adc_adjusted : std_logic_vector(adc_in'range);
+	signal fft_input, selected_input : std_logic_vector(adc_in'range);
 	signal sine_buffer : std_logic_vector(sine_out'range) := (others => '0');
-
+	signal adc_selected : std_logic;
+	signal adjusted_fft_clk : std_logic;
+	signal adjusted_fft_clk_counter, adjusted_fft_clk_counter_max : integer;
 begin
 
-	adc_clk <= fft_clk;
+	selected_input <= adc_in when adc_selected = '1' else sine_buffer;
+
+	adc_clk <= adjusted_fft_clk;
+	
+	process(fft_clk, rst)
+	begin
+		if(rst = '1') then
+			adjusted_fft_clk_counter <= 0;
+			adjusted_fft_clk <= '0';
+		elsif(rising_edge(fft_clk)) then
+			adjusted_fft_clk_counter <= adjusted_fft_clk_counter + 1;
+			if(adjusted_fft_clk_counter >= adjusted_fft_clk_counter_max) then
+				adjusted_fft_clk <= not adjusted_fft_clk;
+				adjusted_fft_clk_counter <= 0;
+			end if;
+		end if;
+	end process;
 	
 	process(vga_clk, rst)
 	begin
@@ -174,11 +213,11 @@ begin
 		end if;
 	end process;
 	
-	process(fft_clk, rst)
+	process(adjusted_fft_clk, rst)
 	begin
 		if(rst = '1') then
 			fft_start <= '0';
-		elsif(rising_edge(fft_clk)) then
+		elsif(rising_edge(adjusted_fft_clk)) then
 			fft_start <= '0';
 			fft_unload <= '0';
 			last_vga_v_blanking <= vga_v_blanking;
@@ -202,12 +241,14 @@ begin
 		end if;
 	end process;
 	
-	process(fft_clk, rst)
+	process(adjusted_fft_clk, rst)
 	begin
 		if(rst = '1') then
 			sine_out <= x"80";
-		elsif(rising_edge(fft_clk)) then
+			fft_input <= (others => '0');
+		elsif(rising_edge(adjusted_fft_clk)) then
 			sine_out <= std_logic_vector(unsigned(sine_buffer) + 128);
+			fft_input <= std_logic_vector(unsigned(selected_input) + unsigned(adc_offset));
 		end if;
 	end process;
 	
@@ -215,11 +256,26 @@ begin
 	begin
 		if(rst = '1') then
 			pinc_in <= x"00FF";
+			weight_in <= (others => '1');
+			fft_scale_sch <= "010101010101010101";
+			adc_offset <= (others => '0');
+			adc_selected <= '0';
+			adjusted_fft_clk_counter_max <= 0;
 		elsif(rising_edge(original_clk)) then
 			if(frame_valid = '1') then
 				case frame(3) is
 					when x"00" =>
 						pinc_in <= frame(4) & frame(5);
+					when x"01" =>
+						weight_in <= frame(4);
+					when x"02" =>
+						fft_scale_sch <= frame(4)(1 downto 0) & frame(5) & frame(6);
+					when x"03" =>
+						adc_offset <= frame(4);
+					when x"04" =>
+						adc_selected <= frame(4)(0);
+					when x"05" =>
+						adjusted_fft_clk_counter_max <= to_integer(unsigned(frame(4)));
 					when others  =>
 						null;
 				end case;
@@ -244,16 +300,16 @@ begin
 	
 	fft_class_inst : fft_class
 	  PORT MAP (
-		 clk => fft_clk,
+		 clk => adjusted_fft_clk,
 		 ce => '1',
 		 sclr => rst,
 		 start => fft_start,
 		 unload => fft_unload,
-		 xn_re => adc_in,
+		 xn_re => fft_input,
 		 xn_im => (others => '0'),
 		 fwd_inv => '1',
 		 fwd_inv_we => '1',
-		 scale_sch => "010101010101010101",
+		 scale_sch => fft_scale_sch,
 		 scale_sch_we => '1',
 		 rfd => fft_rfd,
 		 xn_index => open,
@@ -275,7 +331,7 @@ begin
 			  original_clk => original_clk);
 	 
 	 Inst_mag: mag PORT MAP(
-		clk => fft_clk,
+		clk => adjusted_fft_clk,
 		rst => rst,
 		input_valid => fft_dv,
 		re => fft_xk_re,
@@ -288,11 +344,11 @@ begin
 	
 	vga_ram_inst : vga_ram_class
 	  PORT MAP (
-		 clka => fft_clk,
-		 ena => mag_output_valid,
-		 wea => (others => mag_output_valid),
-		 addra => mag_idx_out,
-		 dina => mag_mag,
+		 clka => adjusted_fft_clk,
+		 ena => avg_dv,
+		 wea => (others => avg_dv),
+		 addra => avg_idx,
+		 dina => avg_avg,
 		 clkb => vga_clk,
 		 enb => vga_ram_class_enb,
 		 addrb => vga_ram_class_addrb,
@@ -314,6 +370,18 @@ begin
 		blue_in => vga_blue_in,
 		red_in => vga_red_in,
 		green_in => vga_green_in
+	);
+	
+	avg_inst : avg PORT MAP(
+		rst => rst,
+		clk => adjusted_fft_clk,
+		a => weight_in,
+		mag_mag => mag_mag,
+		mag_idx => mag_idx_out,
+		mag_dv => mag_output_valid,
+		avg => avg_avg,
+		idx => avg_idx,
+		dv => avg_dv
 	);
 
 end Behavioral;
